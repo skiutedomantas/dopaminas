@@ -1,0 +1,121 @@
+---
+import { Image } from "astro:assets";
+import Logo from "../../src/assets/logo.png";
+import Hamburger from "../../src/assets/hamburger.png";
+---
+
+<style>
+  nav {
+    display: none;
+  }
+
+  header {
+    padding: 1rem 0.9375rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    width: auto;
+    height: 60px;
+  }
+  .hamburger {
+    width: 36px;
+    height: 36px;
+  }
+
+  @media (min-width: 768px) {
+    header {
+      padding: 1rem 1.25rem;
+    }
+
+    .hamburger {
+      display: none;
+    }
+
+    nav {
+      display: block;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: space-between;
+      width: 33.0625rem;
+    }
+
+    nav li {
+      list-style: none;
+      color: var(--large-text-color);
+      transition: color 0.3s ease;
+    }
+
+    nav li:hover {
+      color: var(--primary-color);
+    }
+
+    nav ul li:nth-child(-n + 4) {
+      position: relative;
+    }
+
+    nav ul li:nth-child(-n + 4)::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary-color);
+      transition: width 0.3s ease;
+    }
+
+    nav ul li:nth-child(-n + 4):hover::after {
+      width: 100%;
+    }
+
+    .button-registruotis {
+      font-weight: 700;
+      border-radius: 0.3125rem;
+      background-color: var(--primary-color);
+      color: var(--background-color);
+      padding: 0.641rem 1.437rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .button-registruotis:hover {
+      background-color: var(--secondary-color);
+    }
+
+    @media (min-width: 1024px) {
+      header {
+        padding: 1.2rem 2.5rem;
+      }
+      nav ul {
+        width: 36.6875rem;
+      }
+    }
+  }
+</style>
+
+<header>
+  <a href="/"
+    ><Image class="logo" src={Logo} alt="Dopaminas" loading="lazy" /></a
+  >
+  <nav>
+    <ul>
+      <li><a href="/">Pagrindinis</a></li>
+      <li><a href="/paslaugos">Paslaugos</a></li>
+      <li><a href="/straipsniai">Blogas</a></li>
+      <li><a href="/kontaktai">Kontaktai</a></li>
+      <li>
+        <a class="button-registruotis" href="/registracija">Registruotis</a>
+      </li>
+    </ul>
+  </nav>
+  <Image
+    class="hamburger"
+    src={Hamburger}
+    alt="Hamburger menu"
+    loading="lazy"
+  />
+</header>
