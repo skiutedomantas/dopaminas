@@ -1,0 +1,162 @@
+---
+import { Image } from "astro:assets";
+import Logo from "../../src/assets/logo_white.png";
+import fb from "../../src/assets/fb.png";
+import ig from "../../src/assets/ig.png";
+import pin from "../../src/assets/pin.png";
+import email from "../../src/assets/email.png";
+import phone from "../../src/assets/phone-call.png";
+---
+
+<style>
+  footer {
+    background-color: var(--secondary-color);
+    color: var(--background-color);
+    padding: 1rem 0;
+  }
+
+  .first-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .social-media {
+    display: flex;
+    gap: 1.25rem;
+  }
+
+  .contacts div {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+  }
+
+  .contacts {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .logo {
+    width: 10.5625rem;
+    height: 4.875rem;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .phone-icon,
+  .pin-icon,
+  .email-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .instagram-icon,
+  .facebook-icon {
+    width: 1.875rem;
+    height: 1.875rem;
+  }
+
+  .copyright {
+    text-align: center;
+    font-size: 0.875rem;
+  }
+
+  @media (min-width: 768px) {
+    footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      gap: 6.75rem;
+      flex-direction: row;
+      margin-bottom: 2.25rem;
+      margin-top: 3rem;
+    }
+
+    ul {
+      gap: 1.31rem;
+    }
+
+    .contacts {
+      margin: 0;
+      gap: 2.53rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container {
+      gap: 10.3rem;
+    }
+  }
+</style>
+
+<footer>
+  <div class="container">
+    <div class="first-container">
+      <a href="/"
+        ><Image class="logo" src={Logo} alt="Dopaminas" loading="lazy" /></a
+      >
+      <div class="social-media">
+        <a href="https://www.facebook.com/dopaminas.lt/"
+          ><Image
+            class="facebook-icon"
+            src={fb}
+            alt="facebook"
+            loading="lazy"
+          /></a
+        >
+        <a href="https://www.instagram.com/dopaminas.lt/"
+          ><Image
+            class="instagram-icon"
+            src={ig}
+            alt="instagram"
+            loading="lazy"
+          /></a
+        >
+      </div>
+    </div>
+    <div class="links">
+      <ul>
+        <li><a href="/">Pagrindinis</a></li>
+        <li><a href="/paslaugos">Paslaugos</a></li>
+        <li><a href="/straipsniai">Blogas</a></li>
+        <li><a href="/kontaktai">Kontaktai</a></li>
+      </ul>
+    </div>
+    <div class="contacts">
+      <div>
+        <Image class="phone-icon" src={phone} alt="phone" loading="lazy" /><p>
+          +37063996502
+        </p>
+      </div>
+      <div>
+        <Image class="pin-icon" src={pin} alt="maps" loading="lazy" /><p>
+          Savanorių pr. 276, Kaunas
+        </p>
+      </div>
+      <div>
+        <Image class="email-icon" src={email} alt="email" loading="lazy" />
+        <p>info@dopaminas.lt</p>
+      </div>
+    </div>
+  </div>
+  <p class="copyright">&#169; 2025, Dopaminas. Visos teisės saugomos</p>
+</footer>
