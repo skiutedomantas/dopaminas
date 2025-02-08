@@ -1,0 +1,33 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Or your default branch (e.g., 'master')
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'  # Use a version that works with your project
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build the project
+      run: npm run build  # This assumes the default build script is 'npm run build'
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: './dist'  # The directory where Astro outputs the built files
+        cname: 'yourdomain.com'  # Optional: if you're using a custom domain
+
