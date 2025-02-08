@@ -1,0 +1,136 @@
+<style>
+  .hidden {
+    display: none;
+  }
+
+  h2 {
+    font-size: 2.25rem;
+    margin-bottom: 1.75rem;
+    text-align: center;
+  }
+
+  h3 {
+    color: var(--large-text-color);
+    font-size: 1.0625rem;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .main-container {
+    margin: 0.94rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .card {
+    filter: drop-shadow(0px 2px 5px rgba(20, 37, 61, 0.1));
+  }
+  .card-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    position: relative;
+    min-width: 18.2rem;
+    border-radius: 0.625rem;
+    height: 4.125rem;
+    background-color: var(--soft-background-color);
+    padding: 0.86rem;
+    filter: drop-shadow(0px 7px 10.1px rgba(1, 2, 36, 0.1));
+  }
+
+  .card-title::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 6px;
+    border-radius: 10px 0 0 10px;
+    background-color: var(--large-text-color);
+  }
+
+  .arrow-icon {
+    width: 0.9375rem;
+    height: 0.9375rem;
+    transform: rotate(90deg);
+  }
+  .card-text {
+    margin-top: -0.375rem;
+    padding: 1.375rem 1.1875rem;
+    background-color: var(--soft-background-color);
+    border-radius: 0 0 0.625rem 0.625rem;
+  }
+
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .no-bold {
+    margin-top: 3.25rem;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  button {
+    color: var(--large-text-color);
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: normal;
+    width: 8.125rem;
+    height: 2.8125rem;
+    border-radius: 0.3125rem;
+    border: 2px solid var(--large-text-color);
+    background: var(--background-color);
+  }
+
+  @media (min-width: 768px) {
+    .card-title {
+      min-width: 45.5rem;
+      max-width: 45.5rem;
+    }
+    .card-text {
+      max-width: 45.5rem;
+    }
+  }
+</style>
+<div class="main-container">
+  <h2>D.U.K</h2>
+  <div class="card-container">
+    <div class="card">
+      <div class="card-title">
+        <h3>Kas yra Dopaminas?</h3>
+        <img class="arrow-icon" src="src/assets/arrow.png" alt="" />
+      </div>
+      <div class="card-text hidden">
+        Dopaminas yra neurotransmiteris – natūralus cheminis junginys gaminamas
+        organizme. Dopaminas dar kitaip vadinamas laimės hormonu, nes yra
+        atsakingas už pasitenkinimą, motyvaciją ir norą mokytis.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">
+        <h3>Kas yra Dopaminas?</h3>
+        <img class="arrow-icon" src="src/assets/arrow.png" alt="" />
+      </div>
+      <div class="card-text hidden">
+        Dopaminas yra neurotransmiteris – natūralus cheminis junginys gaminamas
+        organizme. Dopaminas dar kitaip vadinamas laimės hormonu, nes yra
+        atsakingas už pasitenkinimą, motyvaciją ir norą mokytis.
+      </div>
+    </div>
+  </div>
+  <h2 class="no-bold">Dar vis turite klausimu?</h2>
+  <button>Susisiek</button>
+</div>
+
+<script>
+  const cardButtons = document.querySelectorAll(".card-title");
+  cardButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const card = button.closest(".card");
+      const text = card.querySelector(".card-text");
+      text.classList.toggle("hidden");
+    });
+  });
+</script>
