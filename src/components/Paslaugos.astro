@@ -1,0 +1,137 @@
+---
+import { Image } from "astro:assets";
+import consult from "../../src/assets/doctor-consultation.png";
+import therapy from "../../src/assets/physical-therapy.png";
+import exercise from "../../src/assets/exercising.png";
+---
+
+<style>
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-icon {
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--soft-background-color);
+    box-shadow: 0px 2px 5px 0px rgba(20, 37, 61, 0.1);
+    padding: 1.25rem 1.5625rem;
+  }
+
+  .card p {
+    text-align: center;
+    margin: 0.7rem 0;
+  }
+
+  h2 {
+    color: var(--large-text-color);
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 2.12rem;
+    margin-top: 3.6rem;
+    max-width: 16.375rem;
+  }
+
+  h3 {
+    color: var(--large-text-color);
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 1.25rem;
+  }
+
+  a {
+    color: var(--primary-color);
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  .underline {
+    text-decoration: underline;
+  }
+
+  @media (min-width: 768px) {
+    .card {
+      max-width: 18.75rem;
+    }
+
+    h2 {
+      font-size: 2.25rem;
+      max-width: fit-content;
+      margin-bottom: 2.75rem;
+    }
+
+    .card-container {
+      justify-content: center;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+</style>
+
+<div class="main-container">
+  <h2>Paslaugos, kurias teikiu</h2>
+  <div class="card-container">
+    <div class="card">
+      <Image
+        class="card-icon"
+        src={consult}
+        alt="konsultacija"
+        loading="lazy"
+      />
+      <h3>Pradinė konsultacija</h3>
+      <p>
+        Įvertinu jūsų laikyseną, raumenų ir sąnarių būklę bei jų sąsają su
+        skausmu ir parenku tinkamiausią gydymo būdą.
+      </p>
+      <div class="read-more">
+        <a href=""
+          ><span class="underline">Skaityti</span> <span>&rarr;</span></a
+        >
+      </div>
+    </div>
+    <div class="card">
+      <Image class="card-icon" src={therapy} alt="Terapija" loading="lazy" />
+      <h3>Manualinė terapija</h3>
+      <p>
+        Švelniais rankų judesiais padedu atpalaiduoti įsitempusius raumenis,
+        pagerinti sąnarių judrumą ir sumažinti skausmą.
+      </p>
+      <div class="read-more">
+        <a href=""
+          ><span class="underline">Skaityti</span> <span>&rarr;</span></a
+        >
+      </div>
+    </div>
+    <div class="card">
+      <Image class="card-icon" src={exercise} alt="Pratimai" loading="lazy" />
+      <h3>Kineziterapija</h3>
+      <p>
+        Parenku individualiai pritaikytus pratimus pagal jūsų būklę, kurie
+        padeda sumažinti skausmą ir atstatyti kūno funkcionalumą.
+      </p>
+      <div class="read-more">
+        <a href=""
+          ><span class="underline">Skaityti</span> <span>&rarr;</span></a
+        >
+      </div>
+    </div>
+  </div>
+</div>
