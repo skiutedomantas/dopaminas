@@ -16,10 +16,16 @@
 
 body {
   font-family: "Inter", "Roboto";
-  font-size: 1rem;
+  font-size: 1.065rem;
   line-height: 1.6;
   background-color: var(--background-color);
   color: var(--body-text-color);
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 1rem;
+  }
 }
 
 a {
@@ -29,4 +35,9 @@ a {
 
 ul {
   list-style: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
 }

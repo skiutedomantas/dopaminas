@@ -1,0 +1,122 @@
+---
+import { Image } from "astro:assets";
+import hero from "../../src/assets/hero_mobile.png";
+---
+
+<style>
+  h1 {
+    color: var(--large-text-color);
+    font-size: 2.1rem;
+    line-height: normal;
+    font-weight: 600;
+    margin-bottom: 0.81rem;
+  }
+
+  .main-container {
+    background-color: #f1f5f9;
+  }
+
+  .left-side {
+    padding: 0.94rem;
+  }
+
+  .button-container {
+    display: flex;
+    gap: 1.25rem;
+    margin-top: 2.25rem;
+  }
+
+  button {
+    border-radius: 0.625rem;
+    background: var(--primary-color);
+    color: var(--background-color);
+    border: none;
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: normal;
+    width: 8.75rem;
+    height: 2.8125rem;
+  }
+
+  button:nth-of-type(2) {
+    background-color: #f1f5f9;
+    width: 8.125rem;
+    color: var(--large-text-color);
+    border: 2px solid var(--large-text-color);
+  }
+
+  .hero-image {
+    margin-top: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 2.625rem;
+    }
+
+    button {
+      width: 10.625rem;
+      height: 3.3125rem;
+    }
+
+    button:nth-of-type(2) {
+      width: 9.375rem;
+    }
+
+    .main-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .left-side {
+      max-width: 405px;
+      padding: 0;
+      margin-left: 1.25rem;
+    }
+
+    .left-side p {
+      max-width: 25rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    h1 {
+      font-size: 3rem;
+    }
+    .hero-image {
+      max-width: 29.0625rem;
+    }
+    .main-container {
+      justify-content: center;
+    }
+
+    .left-side {
+      max-width: 30.375rem;
+    }
+
+    .left-side p {
+      margin-top: 2.0625rem;
+      margin-bottom: 2.875rem;
+    }
+  }
+</style>
+
+<div class="main-container">
+  <div class="left-side">
+    <h1>Padedu susigrąžinti judėjimo laisvę</h1>
+    <p>
+      Gydymas pritaikytas konkrečiai Jums, Jūsų autentiškam kūnui, Jūsų
+      sveikatos istorijai
+    </p>
+    <div class="button-container">
+      <button>Registruotis</button>
+      <button>Susisiek</button>
+    </div>
+  </div>
+  <Image
+    class="hero-image"
+    src={hero}
+    alt="Dominykas Pakarklis"
+    loading="lazy"
+  />
+</div>
