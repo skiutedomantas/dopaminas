@@ -1,0 +1,164 @@
+<style>
+  iframe {
+    width: 100%;
+  }
+  h2 {
+    color: var(--large-text-color);
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: normal;
+  }
+  input {
+    width: 15.625rem;
+    height: 2.4375rem;
+    border-radius: 0.3125rem;
+    border: 1px solid var(--large-text-color);
+  }
+
+  textarea {
+    resize: none;
+    width: 15.625rem;
+    height: 7.875rem;
+    border-radius: 0.3125rem;
+    border: 1px solid var(--large-text-color);
+  }
+
+  button {
+    width: 10rem;
+    height: 2.25rem;
+    border-radius: 0.625rem;
+    border: none;
+    background: var(--primary-color);
+    color: var(--background-color);
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.8rem;
+    margin-bottom: 3.8rem;
+  }
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.56rem;
+    padding-bottom: 1.7rem;
+    border-bottom: 0.0625rem solid var(--large-text-color);
+  }
+
+  .info-info {
+    display: flex;
+    align-items: center;
+    gap: 0.62rem;
+  }
+
+  .info-info img {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  .bigger-icons img {
+    width: 1.875rem;
+    height: 1.875rem;
+  }
+
+  h4 {
+    color: var(--large-text-color);
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 0.63rem;
+  }
+
+  .contact-info {
+    margin-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.91rem;
+  }
+
+  @media (min-width: 768px) {
+    .contact-container {
+      flex-direction: row;
+      justify-content: center;
+      margin: 5rem 0;
+    }
+
+    .contact-form {
+      border-bottom: none;
+      border-right: 0.0625rem solid var(--large-text-color);
+      padding-bottom: 0;
+      padding-right: 3.12rem;
+      align-items: start;
+    }
+    input {
+      width: 19.0625rem;
+    }
+
+    textarea {
+      width: 19.0625rem;
+    }
+
+    h2 {
+      font-size: 2.25rem;
+    }
+    iframe {
+      height: 22.25rem;
+    }
+  }
+</style>
+
+<div class="main-container">
+  <div class="contact-container">
+    <div class="contact-form">
+      <h2>Parašykite mums</h2>
+      <input type="text" />
+      <input type="email" />
+      <textarea name="" id=""></textarea>
+      <button>Siusti</button>
+    </div>
+    <div class="contact-info">
+      <div class="info-container">
+        <h4>Telefono numeris</h4>
+        <div class="info-info">
+          <img src="src/assets/phone-call_black.png" alt="" />
+          <p>+37063996502</p>
+        </div>
+      </div>
+      <div class="info-container">
+        <h4>Adresas</h4>
+        <div class="info-info">
+          <img src="src/assets/pin_black.png" alt="" />
+          <p>Savanorių pr. 276, Kaunas</p>
+        </div>
+      </div>
+      <div class="info-container">
+        <h4>El. Paštas</h4>
+        <div class="info-info">
+          <img src="src/assets/email_black.png" alt="" />
+          <p>info@dopaminas.lt</p>
+        </div>
+      </div>
+      <div class="info-container">
+        <h4>Socialiniai tinklai</h4>
+        <div class="info-info bigger-icons">
+          <img src="src/assets/fb_black.png" alt="" />
+          <img src="src/assets/ig_black.png" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="map-container">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d573.1667272296919!2d23.948811869683894!3d54.917323769109686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46e7188d2d86390f%3A0xbe80df3c38fdb9b!2sSavanori%C5%B3%20pr.%20276%2C%20Kaunas%2C%2050200%20Kauno%20m.%20sav.%2C%20Lithuania!5e0!3m2!1sen!2sbe!4v1739055680482!5m2!1sen!2sbe"
+      width="320"
+      height="320"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</div>
