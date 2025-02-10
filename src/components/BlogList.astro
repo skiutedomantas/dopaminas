@@ -1,0 +1,28 @@
+---
+import BlogCard from "./BlogCard.astro";
+const getContent = async () => {
+  const res = await fetch(
+    "http://localhost/wordpress/wp-json/wp/v2/straipsniai?acf_format=standard&per_page=20"
+  );
+  const data = await res.json();
+  return data;
+};
+
+const blogs = await getContent();
+---
+
+<div class="main-container">
+  <h2>Straipsniai</h2>
+  <input type="text" />
+  <div class="blog-container">
+    <ul>
+      {
+        blogs.map((blog) => (
+          <li>
+            <BlogCard blog={blog} />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>

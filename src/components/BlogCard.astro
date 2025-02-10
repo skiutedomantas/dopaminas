@@ -1,0 +1,13 @@
+---
+const { blog } = Astro.props;
+---
+
+<div>
+  <img src={blog.acf.pagrindine_nuotrauka} alt="" />
+  <div class="info-container">
+    <p class="date">Vasario 2, 2025</p>
+    <h3>{blog.title.rendered}</h3>
+    <p class="excerpt">{blog.acf.trumpas_aprasymas}</p>
+    <a href={`/straipsnis/${blog.slug}`}>Skaityti</a>
+  </div>
+</div>
