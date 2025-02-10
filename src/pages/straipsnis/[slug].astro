@@ -1,0 +1,25 @@
+---
+import Base from "../../layouts/Base.astro";
+export async function getStaticPaths() {
+  const API_URL = "http://localhost/wordpress/wp-json/wp/v2/straipsniai";
+  const res = await fetch(`${API_URL}?acf_format=standard&per_page=20`);
+  const blogs = await res.json();
+
+  return blogs.map((blog) => ({
+    params: { slug: blog.slug },
+  }));
+}
+
+const API_URL = "http://localhost/wordpress/wp-json/wp/v2/straipsniai";
+const res = await fetch(`${API_URL}?acf_format=standard&per_page=20`);
+const blogs = await res.json();
+
+const { slug } = Astro.params;
+
+const blog = blogs.find((b) => b.slug === slug);
+---
+
+<Base>
+  <h3>{blog.title.rendered}</h3>
+  <div class="content-text" set:html={blog.acf.kontentas} />
+</Base>
