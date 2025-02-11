@@ -11,6 +11,20 @@ const getContent = async () => {
 const blogs = await getContent();
 ---
 
+<style>
+  .blog-container {
+    background-color: var(--soft-background-color);
+    padding: 2rem 0;
+  }
+  ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: min(2.7rem, 1rem + 1vw);
+    margin: 0 0.94rem;
+  }
+</style>
+
 <div class="main-container">
   <h2>Straipsniai</h2>
   <input type="text" />

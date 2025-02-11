@@ -19,7 +19,17 @@ const { slug } = Astro.params;
 const blog = blogs.find((b) => b.slug === slug);
 ---
 
+<style is:global>
+  .content-text img {
+    width: 400px;
+  }
+
+  figcaption {
+    text-align: center;
+  }
+</style>
+
 <Base>
-  <h3>{blog.title.rendered}</h3>
+  <h1>{blog.title.rendered}</h1>
   <div class="content-text" set:html={blog.acf.kontentas} />
 </Base>
