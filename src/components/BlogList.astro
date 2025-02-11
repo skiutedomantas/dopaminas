@@ -1,5 +1,6 @@
 ---
 import BlogCard from "./BlogCard.astro";
+
 const getContent = async () => {
   const res = await fetch(
     "http://localhost/wordpress/wp-json/wp/v2/straipsniai?acf_format=standard&per_page=20"
@@ -12,31 +13,111 @@ const blogs = await getContent();
 ---
 
 <style>
+  .text-container {
+    margin-top: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h2 {
+    color: var(--large-text-color);
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 1.3rem;
+  }
+
+  input {
+    border-radius: 0.3125rem;
+    border: 1px solid var(--large-text-color);
+    width: 17.0625rem;
+    height: 2.4375rem;
+    padding: 0.75rem 0.9375rem;
+  }
+
+  input:focus {
+    border: 1px solid var(--primary-color);
+    outline: 2px solid var(--primary-color);
+  }
+
   .blog-container {
     background-color: var(--soft-background-color);
     padding: 2rem 0;
+    margin-top: 1.4rem;
   }
+
   ul {
-    display: flex;
+    display: grid;
     justify-content: center;
-    flex-wrap: wrap;
+    grid-template-columns: repeat(auto-fit, min(18.125rem));
     gap: min(2.7rem, 1rem + 1vw);
     margin: 0 0.94rem;
+  }
+  #no-results {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: var(--large-text-color);
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .text-container {
+      margin-top: 5.7rem;
+      margin-bottom: 3rem;
+      margin-left: 1.25rem;
+      align-items: start;
+    }
+    h2 {
+      font-size: 2.25rem;
+    }
   }
 </style>
 
 <div class="main-container">
-  <h2>Straipsniai</h2>
-  <input type="text" />
+  <div class="text-container">
+    <h2>Straipsniai</h2>
+    <input type="text" id="search" placeholder="Ieškoti..." />
+  </div>
   <div class="blog-container">
-    <ul>
+    <ul id="blog-list">
       {
         blogs.map((blog) => (
-          <li>
+          <li class="blog-item">
             <BlogCard blog={blog} />
           </li>
         ))
       }
     </ul>
+    <p id="no-results" class="hidden">Nerasta</p>
   </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.getElementById("search");
+    const noResultsMessage = document.getElementById("no-results");
+    const blogs = [...document.querySelectorAll(".blog-item")];
+
+    searchInput.addEventListener("input", function () {
+      const searchTerm = this.value.toLowerCase();
+      let found = false;
+
+      blogs.forEach((blog) => {
+        const text = blog.textContent.toLowerCase();
+        if (text.includes(searchTerm)) {
+          blog.style.display = "block";
+          found = true;
+        } else {
+          blog.style.display = "none";
+        }
+      });
+
+      noResultsMessage.style.display = found ? "none" : "block";
+    });
+  });
+</script>
