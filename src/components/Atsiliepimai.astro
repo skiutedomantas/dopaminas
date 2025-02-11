@@ -34,6 +34,7 @@
     font-weight: 400;
     line-height: normal;
   }
+
   .left-side {
     margin-bottom: 3rem;
     max-width: 25rem;
@@ -51,6 +52,10 @@
     padding-left: 1rem;
     filter: drop-shadow(0px 2px 5px rgba(20, 37, 61, 0.1));
     position: relative;
+    transition:
+      transform 0.3s ease,
+      filter 0.3s ease,
+      background-color 0.3s ease;
   }
 
   .card::before {
@@ -62,12 +67,21 @@
     width: 6px;
     border-radius: 10px 0 0 10px;
     background-color: var(--large-text-color);
+    transition: background-color 0.3s ease;
   }
 
   .card-container {
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
+  }
+
+  .card.active {
+    transform: translateX(-50px);
+  }
+
+  .card.active::before {
+    background-color: var(--primary-color);
   }
 
   @media (min-width: 768px) {
@@ -110,7 +124,7 @@
         <p>Dominyko atsidavimas jo darbui vertas aplodismentu.</p>
       </div>
     </div>
-    <div class="card">
+    <div class="card active">
       <img class="user-icon" src="src/assets/user.png" alt="" />
       <div class="card-text">
         <h4>Gediminas</h4>
@@ -131,3 +145,19 @@
     </div>
   </div>
 </div>
+
+<script>
+  const cards = document.querySelectorAll(".card");
+  let activeCard = document.querySelector(".card.active");
+
+  function activateCard(card) {
+    if (card === activeCard) return;
+    activeCard.classList.remove("active");
+    card.classList.add("active");
+    activeCard = card;
+  }
+
+  cards.forEach((card) => {
+    card.addEventListener("mouseenter", () => activateCard(card));
+  });
+</script>
