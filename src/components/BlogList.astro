@@ -10,6 +10,7 @@ const getContent = async () => {
 };
 
 const blogs = await getContent();
+const newestBlogs = blogs.slice(-5);
 ---
 
 <style>
@@ -45,6 +46,8 @@ const blogs = await getContent();
     background-color: var(--soft-background-color);
     padding: 2rem 0;
     margin-top: 1.4rem;
+    display: flex;
+    flex-direction: column;
   }
 
   ul {
@@ -65,7 +68,23 @@ const blogs = await getContent();
     display: none;
   }
 
+  .icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .blog-cards {
+    flex: 4;
+  }
+
+  .contact-container {
+    flex: 1;
+  }
+
   @media (min-width: 768px) {
+    .blog-container {
+      flex-direction: row;
+    }
     .text-container {
       margin-top: 5.7rem;
       margin-bottom: 3rem;
@@ -84,16 +103,38 @@ const blogs = await getContent();
     <input type="text" id="search" placeholder="Ieškoti..." />
   </div>
   <div class="blog-container">
-    <ul id="blog-list">
-      {
-        blogs.map((blog) => (
-          <li class="blog-item">
-            <BlogCard blog={blog} />
-          </li>
-        ))
-      }
-    </ul>
-    <p id="no-results" class="hidden">Nerasta</p>
+    <div class="blog-cards">
+      <ul id="blog-list">
+        {
+          blogs.map((blog) => (
+            <li class="blog-item">
+              <BlogCard blog={blog} />
+            </li>
+          ))
+        }
+      </ul>
+      <p id="no-results" class="hidden">Nerasta</p>
+    </div>
+    <div class="contact-container">
+      <div class="contacts">
+        <h3>Sekite mane</h3>
+        <div>
+          <img class="icon" src="src/assets/ig_black.png" alt="" />
+          <img class="icon" src="src/assets/fb_black.png" alt="" />
+        </div>
+      </div>
+      <div class="popular">
+        <ul>
+          {
+            newestBlogs.map((blog) => (
+              <li class="popular-blog">
+                <a href={`/straipsnis/${blog.slug}`}>{blog.title.rendered}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
 
