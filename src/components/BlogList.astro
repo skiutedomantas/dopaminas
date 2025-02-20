@@ -195,6 +195,7 @@ const secondTen = blogs.slice(9, 18);
     ".pagination-buttons button"
   );
   const searchListWrapper = document.getElementById("search-list-wrapper");
+  const searchList = document.getElementById("search-list");
 
   let searchActive = false;
 
@@ -223,13 +224,13 @@ const secondTen = blogs.slice(9, 18);
     firstTenWrapper.style.display = "none";
     secondTenWrapper.style.display = "none";
 
-    searchListWrapper.innerHTML = "";
+    searchList.innerHTML = "";
 
     blogs.forEach((blog) => {
       const text = blog.textContent.toLowerCase();
       if (text.includes(searchTerm)) {
         const clonedBlog = blog.cloneNode(true);
-        searchListWrapper.appendChild(clonedBlog);
+        searchList.appendChild(clonedBlog);
         found = true;
       }
     });
