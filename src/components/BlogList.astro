@@ -10,12 +10,15 @@ const getContent = async () => {
 };
 
 const blogs = await getContent();
-const newestBlogs = blogs.slice(-5);
+
+const five = blogs.slice(0, 5);
+const firstTen = blogs.slice(0, 9);
+const secondTen = blogs.slice(9, 18);
 ---
 
 <style>
   .text-container {
-    margin-top: 1.75rem;
+    margin-top: 28px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,29 +26,29 @@ const newestBlogs = blogs.slice(-5);
 
   h2 {
     color: var(--large-text-color);
-    font-size: 2rem;
+    font-size: 32px;
     font-weight: 600;
     line-height: normal;
-    margin-bottom: 1.3rem;
+    margin-bottom: 20.8px;
   }
 
   input {
-    border-radius: 0.3125rem;
-    border: 1px solid var(--large-text-color);
-    width: 17.0625rem;
-    height: 2.4375rem;
-    padding: 0.75rem 0.9375rem;
+    border-radius: 5px;
+    border: 0.0625rem solid var(--large-text-color);
+    width: 273px;
+    height: 39px;
+    padding: 12px 15px;
   }
 
   input:focus {
-    border: 1px solid var(--primary-color);
-    outline: 2px solid var(--primary-color);
+    border: 0.0625rem solid var(--primary-color);
+    outline: 0.125rem solid var(--primary-color);
   }
 
   .blog-container {
     background-color: var(--soft-background-color);
-    padding: 2rem 0;
-    margin-top: 1.4rem;
+    padding: 32px 0;
+    margin-top: 22.4px;
     display: flex;
     flex-direction: column;
   }
@@ -53,14 +56,15 @@ const newestBlogs = blogs.slice(-5);
   ul {
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(auto-fit, min(18.125rem));
-    gap: min(2.7rem, 1rem + 1vw);
-    margin: 0 0.94rem;
+    grid-template-columns: repeat(auto-fit, min(290px));
+    gap: min(43.2px, 16px + 1vw);
+    margin: 0 15.04px;
   }
+
   #no-results {
     text-align: center;
-    margin-top: 1rem;
-    font-size: 1.2rem;
+    margin-top: 16px;
+    font-size: 19.2px;
     color: var(--large-text-color);
   }
 
@@ -69,8 +73,8 @@ const newestBlogs = blogs.slice(-5);
   }
 
   .icon {
-    width: 40px;
-    height: 40px;
+    width: 2.5rem;
+    height: 2.5rem;
   }
 
   .blog-cards {
@@ -81,18 +85,35 @@ const newestBlogs = blogs.slice(-5);
     flex: 1;
   }
 
-  @media (min-width: 768px) {
+  .pagination-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .pagination-buttons button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  @media (min-width: 48rem) {
     .blog-container {
       flex-direction: row;
     }
+
     .text-container {
-      margin-top: 5.7rem;
-      margin-bottom: 3rem;
-      margin-left: 1.25rem;
+      margin-top: 91.2px;
+      margin-bottom: 48px;
+      margin-left: 20px;
       align-items: start;
     }
+
     h2 {
-      font-size: 2.25rem;
+      font-size: 36px;
     }
   }
 </style>
@@ -104,16 +125,40 @@ const newestBlogs = blogs.slice(-5);
   </div>
   <div class="blog-container">
     <div class="blog-cards">
-      <ul id="blog-list">
-        {
-          blogs.map((blog) => (
-            <li class="blog-item">
-              <BlogCard blog={blog} />
-            </li>
-          ))
-        }
-      </ul>
+      <div id="firstTen-wrapper" class="blog-list-wrapper">
+        <ul id="firstTen-list" class="blog-list">
+          {
+            firstTen.map((blog) => (
+              <li class="blog-item">
+                <BlogCard blog={blog} />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div id="secondTen-wrapper" class="blog-list-wrapper hidden">
+        <ul id="secondTen-list" class="blog-list">
+          {
+            secondTen.map((blog) => (
+              <li class="blog-item">
+                <BlogCard blog={blog} />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div id="search-list-wrapper" class="blog-list-wrapper hidden">
+        <ul id="search-list" class="blog-list"></ul>
+      </div>
+
       <p id="no-results" class="hidden">Nerasta</p>
+
+      <div class="pagination-buttons">
+        <button id="btn1">1</button>
+        <button id="btn2">2</button>
+      </div>
     </div>
     <div class="contact-container">
       <div class="contacts">
@@ -126,7 +171,7 @@ const newestBlogs = blogs.slice(-5);
       <div class="popular">
         <ul>
           {
-            newestBlogs.map((blog) => (
+            five.map((blog) => (
               <li class="popular-blog">
                 <a href={`/straipsnis/${blog.slug}`}>{blog.title.rendered}</a>
               </li>
@@ -138,27 +183,78 @@ const newestBlogs = blogs.slice(-5);
   </div>
 </div>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const searchInput = document.getElementById("search");
-    const noResultsMessage = document.getElementById("no-results");
-    const blogs = [...document.querySelectorAll(".blog-item")];
+<script client:load>
+  const btn1 = document.getElementById("btn1");
+  const btn2 = document.getElementById("btn2");
+  const firstTenWrapper = document.getElementById("firstTen-wrapper");
+  const secondTenWrapper = document.getElementById("secondTen-wrapper");
+  const searchInput = document.getElementById("search");
+  const noResultsMessage = document.getElementById("no-results");
+  const blogs = [...document.querySelectorAll(".blog-item")];
+  const paginationButtons = document.querySelectorAll(
+    ".pagination-buttons button"
+  );
+  const searchListWrapper = document.getElementById("search-list-wrapper");
 
-    searchInput.addEventListener("input", function () {
-      const searchTerm = this.value.toLowerCase();
-      let found = false;
+  let searchActive = false;
 
-      blogs.forEach((blog) => {
-        const text = blog.textContent.toLowerCase();
-        if (text.includes(searchTerm)) {
-          blog.style.display = "block";
-          found = true;
-        } else {
-          blog.style.display = "none";
-        }
+  firstTenWrapper.style.display = "block";
+  secondTenWrapper.style.display = "none";
+
+  btn1.addEventListener("click", function () {
+    firstTenWrapper.style.display = "block";
+    secondTenWrapper.style.display = "none";
+  });
+
+  btn2.addEventListener("click", function () {
+    firstTenWrapper.style.display = "none";
+    secondTenWrapper.style.display = "block";
+  });
+
+  searchInput.addEventListener("input", function () {
+    const searchTerm = this.value.toLowerCase();
+    let found = false;
+
+    paginationButtons.forEach((btn) => {
+      btn.style.display = "none";
+    });
+
+    searchListWrapper.style.display = "block";
+    firstTenWrapper.style.display = "none";
+    secondTenWrapper.style.display = "none";
+
+    searchListWrapper.innerHTML = "";
+
+    blogs.forEach((blog) => {
+      const text = blog.textContent.toLowerCase();
+      if (text.includes(searchTerm)) {
+        const clonedBlog = blog.cloneNode(true);
+        searchListWrapper.appendChild(clonedBlog);
+        found = true;
+      }
+    });
+
+    noResultsMessage.style.display = found ? "none" : "block";
+
+    searchActive = true;
+  });
+
+  searchInput.addEventListener("blur", function () {
+    if (!searchInput.value) {
+      paginationButtons.forEach((btn) => {
+        btn.style.display = "block";
       });
 
-      noResultsMessage.style.display = found ? "none" : "block";
+      firstTenWrapper.style.display = "block";
+      secondTenWrapper.style.display = "none";
+      searchListWrapper.style.display = "none";
+      searchActive = false;
+    }
+  });
+
+  searchInput.addEventListener("focus", function () {
+    paginationButtons.forEach((btn) => {
+      btn.style.display = "none";
     });
   });
 </script>
