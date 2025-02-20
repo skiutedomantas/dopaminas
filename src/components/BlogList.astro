@@ -17,6 +17,10 @@ const secondTen = blogs.slice(9, 18);
 ---
 
 <style>
+  html {
+    scroll-behavior: smooth;
+  }
+
   .text-container {
     margin-top: 28px;
     display: flex;
@@ -186,7 +190,7 @@ const secondTen = blogs.slice(9, 18);
 </style>
 
 <div class="main-container">
-  <div class="text-container">
+  <div class="text-container" id="text-container">
     <h2>Straipsniai</h2>
     <input type="text" id="search" placeholder="Ieškoti..." />
   </div>
@@ -223,8 +227,8 @@ const secondTen = blogs.slice(9, 18);
       <p id="no-results" class="hidden">Nerasta</p>
 
       <div class="pagination-buttons">
-        <button id="btn1">1</button>
-        <button id="btn2">2</button>
+        <a href="#text-container"><button id="btn1">1</button></a>
+        <a href="#text-container"><button id="btn1">2</button></a>
       </div>
     </div>
     <div class="contact-container">
