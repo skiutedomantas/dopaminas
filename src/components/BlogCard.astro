@@ -40,21 +40,41 @@ const { blog } = Astro.props;
     overflow: hidden;
     min-width: 15.625rem;
   }
-  .read {
-    display: none;
-  }
+
   .info-container {
-    flex-wrap: wrap;
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
     padding: 0.62rem 0.94rem 0.9rem 0.94rem;
     height: 140px;
+  }
+
+  .read {
+    display: none;
   }
 
   @media (min-width: 768px) {
     .info-container {
       display: flex;
-      justify-content: space-around;
-      min-height: 140px;
+      min-height: 190px;
+    }
+
+    .read {
+      display: block;
+      font-size: 12px;
+      color: var(--background-color);
+      background-color: var(--primary-color);
+      padding: 0.3rem 1.6rem;
+      border: none;
+      border-radius: 0.3125rem;
+      margin-top: 0.87rem;
+      transition: all 0.3s ease;
+    }
+
+    .read:hover {
+      cursor: pointer;
+      background-color: var(--secondary-color);
     }
   }
 </style>
@@ -66,7 +86,7 @@ const { blog } = Astro.props;
       <p class="date">&#9678; Vasario 2, 2025</p>
       <h3>{blog.title.rendered}</h3>
       <p class="excerpt">{blog.acf.trumpas_aprasymas}</p>
-      <a class="read">Skaityti</a>
+      <button class="read">Skaityti</button>
     </div>
   </div>
 </a>
