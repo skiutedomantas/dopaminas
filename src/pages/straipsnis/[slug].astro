@@ -17,19 +17,204 @@ const blogs = await res.json();
 const { slug } = Astro.params;
 
 const blog = blogs.find((b) => b.slug === slug);
+const five = blogs.slice(0, 5);
 ---
 
 <style is:global>
+  h1 {
+    margin-bottom: 1.2rem;
+    color: var(--large-text-color);
+    font-size: 28px;
+  }
+
+  h2 {
+    margin-top: 4rem;
+    font-size: 24px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  h2,
+  h3 {
+    color: var(--large-text-color);
+    margin-bottom: 0.6rem;
+  }
+
+  .main-container {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    padding: 0 10%;
+    gap: 5rem;
+  }
+
+  .content-text {
+    margin-bottom: 4rem;
+  }
+
+  .content-text::before,
+  .content-text::after {
+    content: "";
+    display: block;
+    width: 10%;
+    height: 2px;
+    background-color: var(--large-text-color);
+    margin: 2rem 0;
+  }
+
+  .content-text p {
+    margin-bottom: 1rem;
+    font-size: 18px;
+    line-height: 1.8;
+  }
   .content-text img {
-    width: 400px;
+    width: 500px;
+    margin: 3rem 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+  }
+
+  ol,
+  ul {
+    padding-left: 1.2rem;
+    line-height: 2;
+  }
+
+  figure {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
   }
 
   figcaption {
     text-align: center;
+    margin-top: -2rem;
+    font-size: 12px;
+  }
+
+  blockquote {
+    background-color: var(--soft-background-color);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    position: relative;
+    font-style: italic;
+    margin: 2rem 0;
+  }
+
+  blockquote::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 6px;
+    border-radius: 10px 0 0 10px;
+    background-color: var(--primary-color);
+  }
+
+  .content-text blockquote p {
+    margin-bottom: 0;
+  }
+
+  .icon {
+    margin-top: 0.4rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .icon:first-of-type {
+    margin-right: 0.7rem;
+  }
+
+  .popular-blog {
+    font-size: 13px;
+    margin: 0.8rem 0;
+    border-top: 1px solid #383d431f;
+    width: 90%;
+    padding-top: 0.8rem;
+    transition: all 0.3s ease;
+  }
+
+  .popular-blog:last-of-type {
+    border-bottom: 1px solid #383d431f;
+    padding-bottom: 0.8rem;
+  }
+
+  .popular-blog:hover {
+    color: var(--primary-color);
+  }
+
+  .contacts {
+    margin-bottom: 3rem;
+  }
+
+  .text-container {
+    flex: 3;
+  }
+
+  .contact-container {
+    flex: 1;
+    border-left: 1px solid #383d431f;
+    padding-left: 4rem;
+  }
+
+  .contacts {
+    margin-bottom: 6rem;
+  }
+
+  .icon-container {
+    margin-top: 1rem;
+  }
+
+  .contact-container h4 {
+    position: relative;
+    padding-left: 1rem;
+  }
+
+  .contact-container h4::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 3px;
+    border-radius: 10px 0 0 10px;
+    background-color: var(--primary-color);
   }
 </style>
 
 <Base>
-  <h1>{blog.title.rendered}</h1>
-  <div class="content-text" set:html={blog.acf.kontentas} />
+  <div class="main-container">
+    <div class="text-container">
+      <h1>{blog.title.rendered}</h1>
+      <div class="content-text" set:html={blog.acf.kontentas} />
+    </div>
+    <div class="contact-container">
+      <div class="contacts">
+        <h4>Sekite mane:</h4>
+        <div class="icon-container">
+          <img class="icon" src="../src/assets/ig_black.png" alt="" />
+          <img class="icon" src="../src/assets/fb_black.png" alt="" />
+        </div>
+      </div>
+      <h4>Naujausi straipsniai</h4>
+      <div class="popular">
+        <ul>
+          {
+            five.map((blog) => (
+              <li class="popular-blog">
+                <a href={`/straipsnis/${blog.slug}`}>{blog.title.rendered}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
 </Base>
