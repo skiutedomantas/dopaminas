@@ -83,11 +83,27 @@ let showOverlay = false;
     line-height: 2;
   }
 
+  table {
+    margin: 3rem 0;
+  }
+
+  th {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    padding: 0.5rem;
+  }
+
+  td {
+    background-color: var(--soft-background-color);
+    padding: 0.5rem;
+  }
+
   figure {
     display: block;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 1rem;
+    width: 500px !important;
   }
 
   figcaption {
@@ -214,6 +230,10 @@ let showOverlay = false;
     width: 90%;
     position: relative;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .overlay-content ol {
+    line-height: 1.5;
   }
 
   .overlay-content p {
