@@ -1,0 +1,342 @@
+---
+import BlogCard from "./BlogCard.astro";
+
+const getContent = async () => {
+  const res = await fetch(
+    "http://localhost/wordpress/wp-json/wp/v2/straipsniai?acf_format=standard&per_page=20"
+  );
+  const data = await res.json();
+  return data;
+};
+
+const blogs = await getContent();
+
+const five = blogs.slice(0, 5);
+const firstTen = blogs.slice(0, 9);
+const secondTen = blogs.slice(9, 18);
+---
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  .text-container {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h2 {
+    color: var(--large-text-color);
+    font-size: 32px;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 20.8px;
+  }
+
+  h3,
+  h4 {
+    color: var(--large-text-color);
+  }
+
+  h3 {
+    margin-bottom: 1rem;
+    font-size: 22px;
+  }
+
+  h4 {
+    margin-top: 1.5rem;
+  }
+
+  input {
+    border-radius: 5px;
+    border: 0.0625rem solid var(--large-text-color);
+    width: 273px;
+    height: 39px;
+    padding: 12px 15px;
+  }
+
+  input:focus {
+    border: 0.0625rem solid var(--primary-color);
+    outline: 0.125rem solid var(--primary-color);
+  }
+
+  .blog-container {
+    background-color: var(--soft-background-color);
+    padding: 32px 0;
+    margin-top: 22.4px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .blog-item {
+    border: 1px solid transparent;
+    border-radius: 10px;
+    box-sizing: border-box;
+  }
+
+  .blog-item:hover {
+    border-color: var(--primary-color);
+  }
+
+  .blog-list {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, min(290px));
+    gap: min(43.2px, 16px + 1vw);
+    margin: 0 15.04px;
+  }
+
+  #no-results {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 19.2px;
+    color: var(--large-text-color);
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .icon:first-of-type {
+    margin-right: 1.5rem;
+  }
+
+  .blog-cards {
+    flex: 3;
+  }
+
+  .contact-container {
+    flex: 1;
+    margin-right: 2rem;
+    border-left: 1px solid #383d4371;
+    padding-left: 4rem;
+  }
+
+  .pagination-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+  }
+
+  .pagination-buttons button {
+    margin: 0 10px;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.25rem;
+    background-color: var(--large-text-color);
+    color: var(--background-color);
+    border: none;
+    cursor: pointer;
+  }
+
+  .pagination-buttons button:hover {
+    background-color: var(--background-color);
+    color: var(--large-text-color);
+    border: 1px solid var(--large-text-color);
+  }
+
+  .pagination-buttons button.active {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border: 1px solid var(--primary-color);
+  }
+
+  .popular-blog {
+    font-size: 13px;
+    margin: 0.8rem 0;
+    border-top: 1px solid #383d431f;
+    width: 90%;
+    padding-top: 0.8rem;
+    transition: all 0.3s ease;
+  }
+
+  .popular-blog:last-of-type {
+    border-bottom: 1px solid #383d431f;
+    padding-bottom: 0.8rem;
+  }
+
+  .popular-blog:hover {
+    color: var(--primary-color);
+  }
+
+  .contacts {
+    margin-bottom: 3rem;
+  }
+
+  @media (min-width: 768px) {
+    .blog-container {
+      flex-direction: row;
+    }
+
+    .text-container {
+      margin-top: 91.2px;
+      margin-bottom: 48px;
+      margin-left: 20px;
+      align-items: start;
+    }
+
+    h2 {
+      font-size: 36px;
+    }
+  }
+</style>
+
+<div class="main-container">
+  <div class="text-container">
+    <h2>Straipsniai</h2>
+    <input type="text" id="search" placeholder="Ieškoti..." />
+  </div>
+  <div class="blog-container">
+    <div class="blog-cards">
+      <div id="firstTen-wrapper" class="blog-list-wrapper">
+        <ul id="firstTen-list" class="blog-list">
+          {
+            firstTen.map((blog) => (
+              <li class="blog-item">
+                <BlogCard blog={blog} />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div id="secondTen-wrapper" class="blog-list-wrapper hidden">
+        <ul id="secondTen-list" class="blog-list">
+          {
+            secondTen.map((blog) => (
+              <li class="blog-item">
+                <BlogCard blog={blog} />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div id="search-list-wrapper" class="blog-list-wrapper hidden">
+        <ul id="search-list" class="blog-list"></ul>
+      </div>
+
+      <p id="no-results" class="hidden">Nerasta</p>
+
+      <div class="pagination-buttons">
+        <button id="btn1">1</button>
+        <button id="btn2">2</button>
+      </div>
+    </div>
+    <div class="contact-container">
+      <div class="contacts">
+        <h3>Sekite mane</h3>
+        <div>
+          <img class="icon" src="src/assets/ig_black.png" alt="" />
+          <img class="icon" src="src/assets/fb_black.png" alt="" />
+        </div>
+      </div>
+      <h4>Naujausi straipsniai</h4>
+      <div class="popular">
+        <ul>
+          {
+            five.map((blog) => (
+              <li class="popular-blog">
+                <a href={`/straipsnis/${blog.slug}`}>{blog.title.rendered}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const btn1 = document.getElementById("btn1");
+  const btn2 = document.getElementById("btn2");
+  const firstTenWrapper = document.getElementById("firstTen-wrapper");
+  const secondTenWrapper = document.getElementById("secondTen-wrapper");
+  const searchInput = document.getElementById("search");
+  const noResultsMessage = document.getElementById("no-results");
+  const blogs = [...document.querySelectorAll(".blog-item")];
+  const paginationButtons = document.querySelectorAll(
+    ".pagination-buttons button"
+  );
+  const searchListWrapper = document.getElementById("search-list-wrapper");
+  const searchList = document.getElementById("search-list");
+
+  let searchActive = false;
+
+  function setActiveButton(activeBtn) {
+    paginationButtons.forEach((btn) => btn.classList.remove("active"));
+    activeBtn.classList.add("active");
+  }
+
+  setActiveButton(btn1);
+  firstTenWrapper.style.display = "block";
+  secondTenWrapper.style.display = "none";
+
+  btn1.addEventListener("click", function () {
+    firstTenWrapper.style.display = "block";
+    secondTenWrapper.style.display = "none";
+    setActiveButton(btn1);
+    window.scrollTo(0, 1);
+  });
+
+  btn2.addEventListener("click", function () {
+    firstTenWrapper.style.display = "none";
+    secondTenWrapper.style.display = "block";
+    setActiveButton(btn2);
+    window.scrollTo(0, 1);
+  });
+
+  searchInput.addEventListener("input", function () {
+    const searchTerm = this.value.toLowerCase();
+    let found = false;
+
+    paginationButtons.forEach((btn) => {
+      btn.style.display = "none";
+    });
+
+    searchListWrapper.style.display = "block";
+    firstTenWrapper.style.display = "none";
+    secondTenWrapper.style.display = "none";
+
+    searchList.innerHTML = "";
+
+    blogs.forEach((blog) => {
+      const text = blog.textContent.toLowerCase();
+      if (text.includes(searchTerm)) {
+        const clonedBlog = blog.cloneNode(true);
+        searchList.appendChild(clonedBlog);
+        found = true;
+      }
+    });
+
+    noResultsMessage.style.display = found ? "none" : "block";
+
+    searchActive = true;
+  });
+
+  searchInput.addEventListener("blur", function () {
+    if (!searchInput.value) {
+      paginationButtons.forEach((btn) => {
+        btn.style.display = "block";
+      });
+
+      firstTenWrapper.style.display = "block";
+      secondTenWrapper.style.display = "none";
+      searchListWrapper.style.display = "none";
+      searchActive = false;
+    }
+  });
+
+  searchInput.addEventListener("focus", function () {
+    paginationButtons.forEach((btn) => {
+      btn.style.display = "none";
+    });
+  });
+</script>

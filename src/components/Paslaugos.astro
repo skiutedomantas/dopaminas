@@ -20,16 +20,27 @@ import exercise from "../../src/assets/exercising.png";
   .card-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 2.5rem;
+    min-height: 320px;
   }
 
   .card {
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 0.625rem;
     background: var(--soft-background-color);
     box-shadow: 0px 2px 5px 0px rgba(20, 37, 61, 0.1);
     padding: 1.25rem 1.5625rem;
+    max-width: 350px;
+    max-height: 290px;
+    transition: all 0.3s ease;
+  }
+
+  .card:hover {
+    transform: scale(1.05);
+    border: 1px solid var(--primary-color);
   }
 
   .card p {
@@ -45,7 +56,7 @@ import exercise from "../../src/assets/exercising.png";
     line-height: normal;
     margin-bottom: 2.12rem;
     margin-top: 3.6rem;
-    max-width: 16.375rem;
+    min-width: 16.375rem;
   }
 
   h3 {

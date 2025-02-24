@@ -9,6 +9,13 @@ import phone from "../../src/assets/phone-call.png";
 ---
 
 <style>
+  .clickable:hover {
+    color: var(--primary-color);
+    cursor: pointer;
+  }
+  .clickable {
+    transition: all 0.3s ease;
+  }
   footer {
     background-color: var(--secondary-color);
     color: var(--background-color);
@@ -148,13 +155,19 @@ import phone from "../../src/assets/phone-call.png";
         </p>
       </div>
       <div>
-        <Image class="pin-icon" src={pin} alt="maps" loading="lazy" /><p>
+        <Image class="pin-icon" src={pin} alt="maps" loading="lazy" /><a
+          href="https://www.google.com/maps?ll=54.917323,23.949456&z=18&t=m&hl=en&gl=BE&mapclient=embed&q=Savanori%C5%B3+pr.+276+Kaunas+50200+Kauno+m.+sav.+Lithuania"
+          target="_blank"
+          class="clickable"
+        >
           Savanorių pr. 276, Kaunas
-        </p>
+        </a>
       </div>
       <div>
         <Image class="email-icon" src={email} alt="email" loading="lazy" />
-        <p>info@dopaminas.lt</p>
+        <p class="clickable">
+          <a href="mailto:info@dopaminas.lt">info@dopaminas.lt</a>
+        </p>
       </div>
     </div>
   </div>
