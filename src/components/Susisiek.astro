@@ -1,3 +1,13 @@
+---
+import { Image } from "astro:assets";
+import background from "../../src/assets/background.png";
+import phoneCall from "../../src/assets/phone-call_black.png";
+import pin from "../../src/assets/pin_black.png";
+import email from "../../src/assets/email_black.png";
+import fb from "../../src/assets/fb_black.png";
+import ig from "../../src/assets/ig_black.png";
+---
+
 <style>
   iframe {
     width: 100%;
@@ -168,7 +178,7 @@
 <div class="main-container">
   <div class="contact-container">
     <div class="background-image">
-      <img src="src/assets/background.png" alt="" />
+      <Image src={background} alt="background-image" loading="lazy" />
     </div>
     <div class="contact-form">
       <h2>Parašykite mums</h2>
@@ -190,14 +200,14 @@
       <div class="info-container">
         <h4>Telefono numeris</h4>
         <div class="info-info">
-          <img src="src/assets/phone-call_black.png" alt="" />
+          <Image src={phoneCall} alt="phone-icon" loading="lazy" />
           <p>+37063996502</p>
         </div>
       </div>
       <div class="info-container">
         <h4>Adresas</h4>
         <div class="info-info">
-          <img src="src/assets/pin_black.png" alt="" />
+          <Image src={pin} alt="maps-icon" loading="lazy" />
           <a
             href="https://www.google.com/maps?ll=54.917323,23.949456&z=18&t=m&hl=en&gl=BE&mapclient=embed&q=Savanori%C5%B3+pr.+276+Kaunas+50200+Kauno+m.+sav.+Lithuania"
             target="_blank"><p>Savanorių pr. 276, Kaunas</p></a
@@ -207,7 +217,7 @@
       <div class="info-container">
         <h4>El. Paštas</h4>
         <div class="info-info">
-          <img src="src/assets/email_black.png" alt="" />
+          <Image src={email} alt="email-icon" loading="lazy" />
           <a href="mailto:info@dopaminas.lt">info@dopaminas.lt</a>
         </div>
       </div>
@@ -215,18 +225,18 @@
         <h4>Socialiniai tinklai</h4>
         <div class="info-info bigger-icons">
           <a href="https://www.facebook.com/dopaminas.lt/" target="_blank">
-            <img src="src/assets/fb_black.png" alt="" />
+            <Image src={fb} alt="facebook" loading="lazy" />
           </a>
-          <a href="https://www.instagram.com/dopaminas.lt/" target="_blank"
-            ><img src="src/assets/ig_black.png" alt="" /></a
-          >
+          <a href="https://www.instagram.com/dopaminas.lt/" target="_blank">
+            <Image src={ig} alt="instagram" loading="lazy" />
+          </a>
         </div>
       </div>
     </div>
   </div>
   <div class="map-container">
     <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d573.1667272296919!2d23.948811869683894!3d54.917323769109686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46e7188d2d86390f%3A0xbe80df3c38fdb9b!2sSavanori%C5%B3%20pr.%20276%2C%20Kaunas%2C%2050200%20Kauno%20m.%20sav.%2C%20Lithuania!5e0!3m2!1sen!2sbe!4v1739055680482!5m2!1sen!2sbe"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1862.639490563045!2d23.947074051464416!3d54.91735210450159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46e719756d022a05%3A0xed5f751c0765a684!2sDopaminas!5e0!3m2!1slt!2sbe!4v1743589747340!5m2!1slt!2sbe"
       width="320"
       height="320"
       style="border:0;"

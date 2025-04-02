@@ -1,3 +1,8 @@
+---
+import { Image } from "astro:assets";
+import icon from "../../src/assets/user.png";
+---
+
 <style>
   .user-icon {
     max-width: 4.375rem;
@@ -118,7 +123,7 @@
   </div>
   <div class="card-container">
     <div class="card">
-      <img class="user-icon" src="../../src/assets/user.png" alt="" />
+      <Image class="user-icon" src={icon} alt="icon" loading="lazy" />
       <div class="card-text">
         <h4>Karolis</h4>
         <p>Dominyko atsidavimas jo darbui vertas aplodismentu.</p>

@@ -1,4 +1,7 @@
 ---
+import { Image } from "astro:assets";
+import ig from "../../src/assets/ig_black.png";
+import fb from "../../src/assets/fb_black.png";
 import BlogCard from "./BlogCard.astro";
 
 const getContent = async () => {
@@ -234,8 +237,8 @@ const secondTen = blogs.slice(9, 18);
       <div class="contacts">
         <h3>Sekite mane</h3>
         <div>
-          <img class="icon" src="src/assets/ig_black.png" alt="" />
-          <img class="icon" src="src/assets/fb_black.png" alt="" />
+          <Image class="icon" src={ig} alt="instagram" loading="lazy" />
+          <Image class="icon" src={fb} alt="facebook" loading="lazy" />
         </div>
       </div>
       <h4>Naujausi straipsniai</h4>
