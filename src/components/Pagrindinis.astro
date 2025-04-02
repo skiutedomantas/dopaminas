@@ -30,11 +30,14 @@ import hero from "../../src/assets/hero_mobile.png";
     margin-top: 2.25rem;
   }
 
-  button {
+  .button-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 0.625rem;
     background: var(--primary-color);
     color: var(--background-color);
-    border: none;
+    text-decoration: none;
     font-size: 1.125rem;
     font-weight: 600;
     line-height: normal;
@@ -43,12 +46,12 @@ import hero from "../../src/assets/hero_mobile.png";
     transition: background-color 0.3s ease;
   }
 
-  button:hover {
+  .button-link:hover {
     background-color: var(--secondary-color);
     cursor: pointer;
   }
 
-  button:nth-of-type(2) {
+  .button-link.secondary {
     background-color: #f1f5f9;
     width: 8.125rem;
     color: var(--large-text-color);
@@ -56,7 +59,7 @@ import hero from "../../src/assets/hero_mobile.png";
     transition: all 0.3s ease;
   }
 
-  button:nth-child(2):hover {
+  .button-link.secondary:hover {
     color: var(--background-color);
     background-color: var(--large-text-color);
     cursor: pointer;
@@ -72,12 +75,12 @@ import hero from "../../src/assets/hero_mobile.png";
       font-size: 2.625rem;
     }
 
-    button {
+    .button-link {
       width: 10.625rem;
       height: 3.3125rem;
     }
 
-    button:nth-of-type(2) {
+    .button-link.secondary {
       width: 9.375rem;
     }
 
@@ -128,8 +131,8 @@ import hero from "../../src/assets/hero_mobile.png";
       sveikatos istorijai
     </p>
     <div class="button-container">
-      <button><a href="/registracija">Registruotis</a></button>
-      <button><a href="/kontaktai">Susisiek</a></button>
+      <a href="/registracija" class="button-link">Registruotis</a>
+      <a href="/kontaktai" class="button-link secondary">Susisiek</a>
     </div>
   </div>
   <Image

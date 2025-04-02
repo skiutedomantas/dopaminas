@@ -90,7 +90,7 @@ import ig from "../../src/assets/ig_black.png";
     height: 1.875rem;
   }
 
-  h4 {
+  .info-title {
     color: var(--large-text-color);
     font-size: 1.125rem;
     font-weight: 500;
@@ -182,30 +182,35 @@ import ig from "../../src/assets/ig_black.png";
     </div>
     <div class="contact-form">
       <h2>Parašykite mums</h2>
+
       <div class="input-group">
-        <input type="text" class="input" />
-        <label class="placeholder">Vardas</label>
+        <input type="text" id="name" class="input" />
+        <label class="placeholder" for="name">Vardas</label>
       </div>
+
       <div class="input-group">
-        <input class="input" type="email" />
-        <label class="placeholder">El. Pastas</label>
+        <input type="email" id="email" class="input" />
+        <label class="placeholder" for="email">El. Paštas</label>
       </div>
+
       <div class="input-group">
-        <textarea class="input"></textarea>
-        <label class="placeholder">Zinute</label>
+        <textarea id="message" class="input"></textarea>
+        <label class="placeholder" for="message">Žinutė</label>
       </div>
-      <button>Siusti</button>
+
+      <button>Siųsti</button>
     </div>
+
     <div class="contact-info">
       <div class="info-container">
-        <h4>Telefono numeris</h4>
+        <p class="info-title">Telefono numeris</p>
         <div class="info-info">
           <Image src={phoneCall} alt="phone-icon" loading="lazy" />
           <p>+37063996502</p>
         </div>
       </div>
       <div class="info-container">
-        <h4>Adresas</h4>
+        <p class="info-title">Adresas</p>
         <div class="info-info">
           <Image src={pin} alt="maps-icon" loading="lazy" />
           <a
@@ -215,14 +220,14 @@ import ig from "../../src/assets/ig_black.png";
         </div>
       </div>
       <div class="info-container">
-        <h4>El. Paštas</h4>
+        <p class="info-title">El. Paštas</p>
         <div class="info-info">
           <Image src={email} alt="email-icon" loading="lazy" />
           <a href="mailto:info@dopaminas.lt">info@dopaminas.lt</a>
         </div>
       </div>
       <div class="info-container">
-        <h4>Socialiniai tinklai</h4>
+        <p class="info-title">Socialiniai tinklai</p>
         <div class="info-info bigger-icons">
           <a href="https://www.facebook.com/dopaminas.lt/" target="_blank">
             <Image src={fb} alt="facebook" loading="lazy" />
@@ -236,6 +241,7 @@ import ig from "../../src/assets/ig_black.png";
   </div>
   <div class="map-container">
     <iframe
+      title="maps"
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1862.639490563045!2d23.947074051464416!3d54.91735210450159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46e719756d022a05%3A0xed5f751c0765a684!2sDopaminas!5e0!3m2!1slt!2sbe!4v1743589747340!5m2!1slt!2sbe"
       width="320"
       height="320"

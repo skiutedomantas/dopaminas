@@ -48,7 +48,7 @@ const blogs = await getContent();
     border-top-left-radius: 0.625rem;
     border-top-right-radius: 0.625rem;
   }
-  h3 {
+  .title {
     color: var(--large-text-color);
     font-size: 1.25rem;
     font-weight: 600;
@@ -165,7 +165,7 @@ const blogs = await getContent();
           />
           <div class="blog-text">
             <p class="date">&#9678; {blog.acf.date}</p>
-            <h3>{blog.title.rendered}</h3>
+            <p class="title">{blog.title.rendered}</p>
             <p class="excerpt">{blog.acf.trumpas_aprasymas}</p>
             <a href={`/straipsnis/${blog.slug}`}>Skaityti plačiau</a>
           </div>

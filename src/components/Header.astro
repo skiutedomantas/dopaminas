@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import Logo from "../../src/assets/logo.png";
 import Hamburger from "../../src/assets/hamburger.png";
+import HamburgerWhite from "../../src/assets/hamburger_white.png";
 ---
 
 <style>
@@ -20,9 +21,70 @@ import Hamburger from "../../src/assets/hamburger.png";
     width: auto;
     height: 60px;
   }
+
   .hamburger {
     width: 36px;
     height: 36px;
+    cursor: pointer;
+  }
+
+  .hamburger-close {
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    position: absolute;
+    top: 32px;
+    right: 15px;
+  }
+
+  .overlay-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .overlay-nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+  }
+
+  .overlay-nav ul li {
+    margin: 2rem 0;
+  }
+
+  .overlay-nav ul li a {
+    color: var(--background-color);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  .overlay-nav ul li a:hover {
+    color: var(--primary-color);
+  }
+
+  @media (max-width: 768px) {
+    nav {
+      display: none;
+    }
+
+    .hamburger {
+      display: block;
+    }
+
+    .overlay-nav {
+      display: none;
+    }
   }
 
   @media (min-width: 768px) {
@@ -90,6 +152,7 @@ import Hamburger from "../../src/assets/hamburger.png";
       header {
         padding: 1.2rem 2.5rem;
       }
+
       nav ul {
         width: 36.6875rem;
       }
@@ -112,6 +175,7 @@ import Hamburger from "../../src/assets/hamburger.png";
       </li>
     </ul>
   </nav>
+
   <Image
     class="hamburger"
     src={Hamburger}
@@ -119,3 +183,37 @@ import Hamburger from "../../src/assets/hamburger.png";
     loading="lazy"
   />
 </header>
+
+<div id="overlay" class="overlay-nav">
+  <Image
+    class="hamburger-close"
+    src={HamburgerWhite}
+    alt="Hamburger menu"
+    loading="lazy"
+  />
+  <ul>
+    <li><a href="/">Pagrindinis</a></li>
+    <li><a href="/paslaugos">Paslaugos</a></li>
+    <li><a href="/straipsniai">Blogas</a></li>
+    <li><a href="/kontaktai">Kontaktai</a></li>
+    <li>
+      <a class="button-registruotis" href="/registracija">Registruotis</a>
+    </li>
+  </ul>
+</div>
+
+<script>
+  const hamburger = document.querySelector(".hamburger");
+  const closeBtn = document.querySelector(".hamburger-close");
+  const overlay = document.getElementById("overlay");
+
+  hamburger.addEventListener("click", function () {
+    overlay.style.display = "flex";
+    document.body.style.overflow = "hidden";
+  });
+
+  closeBtn.addEventListener("click", function () {
+    overlay.style.display = "none";
+    document.body.style.overflow = "auto";
+  });
+</script>

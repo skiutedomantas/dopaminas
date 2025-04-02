@@ -19,8 +19,6 @@ const { slug } = Astro.params;
 
 const blog = blogs.find((b) => b.slug === slug);
 const five = blogs.slice(0, 5);
-
-let showOverlay = false;
 ---
 
 <style is:global>
@@ -192,12 +190,13 @@ let showOverlay = false;
     margin-top: 1rem;
   }
 
-  .contact-container h4 {
+  .sekite-mane {
+    font-weight: 600;
     position: relative;
     padding-left: 1rem;
   }
 
-  .contact-container h4::before {
+  .sekite-mane::before {
     content: "";
     position: absolute;
     top: 0;
@@ -211,7 +210,7 @@ let showOverlay = false;
   .literatura {
     font-size: 14px;
     cursor: pointer;
-    color: #383d43af;
+    color: #0a0b0cb0;
   }
 
   .overlay {
@@ -290,7 +289,7 @@ let showOverlay = false;
   }
 </style>
 
-<Base>
+<Base title={blog.title.rendered}>
   <div class="main-container">
     <div class="text-container">
       <div id="progress"></div>
@@ -312,13 +311,13 @@ let showOverlay = false;
     </div>
     <div class="contact-container">
       <div class="contacts">
-        <h4>Sekite mane:</h4>
+        <p class="sekite-mane">Sekite mane:</p>
         <div class="icon-container">
           <img class="icon" src="../src/assets/ig_black.png" alt="" />
           <img class="icon" src="../src/assets/fb_black.png" alt="" />
         </div>
       </div>
-      <h4>Naujausi straipsniai</h4>
+      <p class="sekite-mane">Naujausi straipsniai</p>
       <div class="popular">
         <ul>
           {

@@ -25,10 +25,10 @@ import icon from "../../src/assets/user.png";
     margin-bottom: 1.44rem;
   }
 
-  h4 {
+  .vardas {
     color: var(--large-text-color);
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 700;
     line-height: normal;
   }
 
@@ -36,7 +36,6 @@ import icon from "../../src/assets/user.png";
     color: var(--body-text-color);
     font-size: 0.875rem;
     font-style: normal;
-    font-weight: 400;
     line-height: normal;
   }
 
@@ -125,14 +124,14 @@ import icon from "../../src/assets/user.png";
     <div class="card">
       <Image class="user-icon" src={icon} alt="icon" loading="lazy" />
       <div class="card-text">
-        <h4>Karolis</h4>
+        <p class="vardas">Karolis</p>
         <p>Dominyko atsidavimas jo darbui vertas aplodismentu.</p>
       </div>
     </div>
     <div class="card active">
       <img class="user-icon" src="src/assets/user.png" alt="" />
       <div class="card-text">
-        <h4>Gediminas</h4>
+        <p class="vardas">Gediminas</p>
         <p>
           Dėmesys, nuoširdus rūpestingumas, rezultatas. Patinka. Rekomenduoju.
         </p>
@@ -141,7 +140,7 @@ import icon from "../../src/assets/user.png";
     <div class="card">
       <img class="user-icon" src="../../src/assets/user.png" alt="" />
       <div class="card-text">
-        <h4>Adomas</h4>
+        <p class="vardas">Adomas</p>
         <p>
           Padėjo spręsti kelio skausmo problemą. Patiko paslaugų kaina
           efektyvumas ir profesionalumas.
