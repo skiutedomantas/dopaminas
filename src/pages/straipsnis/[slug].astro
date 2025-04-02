@@ -1,4 +1,7 @@
 ---
+import { Image } from "astro:assets";
+import ig from "/src/assets/ig_black.png";
+import fb from "/src/assets/fb_black.png";
 import Autorius from "../../components/Autorius.astro";
 import Base from "../../layouts/Base.astro";
 export async function getStaticPaths() {
@@ -313,8 +316,8 @@ const five = blogs.slice(0, 5);
       <div class="contacts">
         <p class="sekite-mane">Sekite mane:</p>
         <div class="icon-container">
-          <img class="icon" src="../src/assets/ig_black.png" alt="" />
-          <img class="icon" src="../src/assets/fb_black.png" alt="" />
+          <Image class="icon" src={ig} loading="lazy" alt="instagram" />
+          <Image class="icon" src={fb} loading="lazy" alt="facebook" />
         </div>
       </div>
       <p class="sekite-mane">Naujausi straipsniai</p>

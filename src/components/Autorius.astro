@@ -1,3 +1,8 @@
+---
+import { Image } from "astro:assets";
+import Dominykas from "../../src/assets/Dominykas-Pakarklis.jpg";
+---
+
 <style>
   img {
     width: 60px;
@@ -46,7 +51,7 @@
 </style>
 
 <div class="author-container">
-  <img src="/src/assets/Dominykas-Pakarklis.jpg" alt="Dominykas Pakarklis" />
+  <Image src={Dominykas} alt="Dominykas Pakarklis" loading="lazy" />
   <div class="info">
     <p class="name">Dominykas Pakarklis</p>
     <p class="kine">Kineziterapeutas</p>
