@@ -294,6 +294,7 @@ const five = blogs.slice(0, 5);
     <div class="text-container">
       <div id="progress"></div>
       <h1>{blog.title.rendered}</h1>
+      <Autorius />
       <div class="content-text" set:html={blog.acf.kontentas} />
       <div>
         <div class="literatura" id="literatura-trigger">
@@ -307,7 +308,6 @@ const five = blogs.slice(0, 5);
           </div>
         </div>
       </div>
-      <Autorius />
     </div>
     <div class="contact-container">
       <div class="contacts">
