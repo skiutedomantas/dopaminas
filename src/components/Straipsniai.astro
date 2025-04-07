@@ -1,13 +1,14 @@
 ---
 const getContent = async () => {
   const res = await fetch(
-    "http://localhost/wordpress/wp-json/wp/v2/straipsniai?acf_format=standard&per_page=3"
+    "http://localhost/wordpress/wp-json/wp/v2/straipsniai?acf_format=standard&per_page=20"
   );
   const data = await res.json();
   return data;
 };
 
 const blogs = await getContent();
+const top = blogs.slice(-3).reverse();
 ---
 
 <style>
@@ -72,7 +73,7 @@ const blogs = await getContent();
     font-weight: 600;
     line-height: 160%;
   }
-  a {
+  .read {
     color: var(--background-color);
     font-size: 0.75rem;
     font-weight: 600;
@@ -84,17 +85,23 @@ const blogs = await getContent();
     transition: all 0.3s ease;
   }
 
-  a:hover {
+  .read:hover {
     background-color: var(--secondary-color);
     cursor: pointer;
   }
 
   .blog-card:nth-child(2) .excerpt {
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
     margin-bottom: 1.29rem;
+  }
+  .blog-card:nth-child(3) .excerpt {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   .header-container {
     display: flex;
@@ -156,19 +163,23 @@ const blogs = await getContent();
   </div>
   <div class="popular-container">
     {
-      blogs.map((blog) => (
+      top.map((blog) => (
         <div class="blog-card">
-          <img
-            class="main-image"
-            src={blog.acf.pagrindine_nuotrauka}
-            alt={blog.title.rendered}
-          />
-          <div class="blog-text">
-            <p class="date">&#9678; {blog.acf.date}</p>
-            <p class="title">{blog.title.rendered}</p>
-            <p class="excerpt">{blog.acf.trumpas_aprasymas}</p>
-            <a href={`/straipsnis/${blog.slug}`}>Skaityti plačiau</a>
-          </div>
+          <a class="link" href={`/straipsnis/${blog.slug}`}>
+            <img
+              class="main-image"
+              src={blog.acf.pagrindine_nuotrauka}
+              alt={blog.title.rendered}
+            />
+            <div class="blog-text">
+              <p class="date">&#9678; {blog.acf.date}</p>
+              <p class="title">{blog.title.rendered}</p>
+              <p class="excerpt">{blog.acf.trumpas_aprasymas}</p>
+              <a class="read" href={`/straipsnis/${blog.slug}`}>
+                Skaityti plačiau
+              </a>
+            </div>
+          </a>
         </div>
       ))
     }

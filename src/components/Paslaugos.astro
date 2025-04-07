@@ -67,11 +67,17 @@ import exercise from "../../src/assets/exercising.png";
     margin-top: 1.25rem;
   }
 
-  a {
+  .read {
     color: var(--primary-color);
     font-size: 0.75rem;
     font-weight: 500;
     line-height: normal;
+  }
+
+  .link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .underline {
@@ -100,49 +106,55 @@ import exercise from "../../src/assets/exercising.png";
 <div class="main-container">
   <h2>Paslaugos, kurias teikiu</h2>
   <div class="card-container">
-    <div class="card">
-      <Image
-        class="card-icon"
-        src={consult}
-        alt="konsultacija"
-        loading="lazy"
-      />
-      <h3>Pradinė konsultacija</h3>
-      <p>
-        Įvertinu jūsų laikyseną, raumenų ir sąnarių būklę bei jų sąsają su
-        skausmu ir parenku tinkamiausią gydymo būdą.
-      </p>
-      <div class="read-more">
-        <a href=""
-          ><span class="underline">Skaityti</span> <span>&rarr;</span></a
-        >
+    <a class="link" href="/paslaugos">
+      <div class="card">
+        <Image
+          class="card-icon"
+          src={consult}
+          alt="konsultacija"
+          loading="lazy"
+        />
+        <h3>Pradinė konsultacija</h3>
+        <p>
+          Įvertinu jūsų laikyseną, raumenų ir sąnarių būklę bei jų sąsają su
+          skausmu ir parenku tinkamiausią gydymo būdą.
+        </p>
+        <div class="read-more">
+          <a class="read" href="/paslaugos"
+            ><span class="underline">Skaityti</span> <span>&rarr;</span></a
+          >
+        </div>
       </div>
-    </div>
-    <div class="card">
-      <Image class="card-icon" src={therapy} alt="Terapija" loading="lazy" />
-      <h3>Manualinė terapija</h3>
-      <p>
-        Švelniais rankų judesiais padedu atpalaiduoti įsitempusius raumenis,
-        pagerinti sąnarių judrumą ir sumažinti skausmą.
-      </p>
-      <div class="read-more">
-        <a href=""
-          ><span class="underline">Skaityti</span> <span>&rarr;</span></a
-        >
+    </a>
+    <a class="link" href="/paslaugos">
+      <div class="card">
+        <Image class="card-icon" src={therapy} alt="Terapija" loading="lazy" />
+        <h3>Manualinė terapija</h3>
+        <p>
+          Švelniais rankų judesiais padedu atpalaiduoti įsitempusius raumenis,
+          pagerinti sąnarių judrumą ir sumažinti skausmą.
+        </p>
+        <div class="read-more">
+          <a class="read" href="/paslaugos"
+            ><span class="underline">Skaityti</span> <span>&rarr;</span></a
+          >
+        </div>
       </div>
-    </div>
-    <div class="card">
-      <Image class="card-icon" src={exercise} alt="Pratimai" loading="lazy" />
-      <h3>Kineziterapija</h3>
-      <p>
-        Parenku individualiai pritaikytus pratimus pagal jūsų būklę, kurie
-        padeda sumažinti skausmą ir atstatyti kūno funkcionalumą.
-      </p>
-      <div class="read-more">
-        <a href=""
-          ><span class="underline">Skaityti</span> <span>&rarr;</span></a
-        >
+    </a>
+    <a class="link" href="/paslaugos">
+      <div class="card">
+        <Image class="card-icon" src={exercise} alt="Pratimai" loading="lazy" />
+        <h3>Kineziterapija</h3>
+        <p>
+          Parenku individualiai pritaikytus pratimus pagal jūsų būklę, kurie
+          padeda sumažinti skausmą ir atstatyti kūno funkcionalumą.
+        </p>
+        <div class="read-more">
+          <a class="read" href="/paslaugos"
+            ><span class="underline">Skaityti</span> <span>&rarr;</span></a
+          >
+        </div>
       </div>
-    </div>
+    </a>
   </div>
 </div>

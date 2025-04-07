@@ -11,7 +11,7 @@ import HamburgerWhite from "../../src/assets/hamburger_white.png";
   }
 
   header {
-    padding: 1rem 0.9375rem;
+    padding: 16px 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -19,22 +19,22 @@ import HamburgerWhite from "../../src/assets/hamburger_white.png";
 
   .logo {
     width: auto;
-    height: 60px;
+    height: 3.75rem;
   }
 
   .hamburger {
-    width: 36px;
-    height: 36px;
+    width: 2.25rem;
+    height: 2.25rem;
     cursor: pointer;
   }
 
   .hamburger-close {
-    width: 36px;
-    height: 36px;
+    width: 2.25rem;
+    height: 2.25rem;
     cursor: pointer;
     position: absolute;
-    top: 32px;
-    right: 15px;
+    top: 2rem;
+    right: 0.9375rem;
   }
 
   .overlay-nav {
@@ -49,7 +49,7 @@ import HamburgerWhite from "../../src/assets/hamburger_white.png";
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 1rem;
+    padding: 16px;
   }
 
   .overlay-nav ul {
@@ -59,21 +59,28 @@ import HamburgerWhite from "../../src/assets/hamburger_white.png";
   }
 
   .overlay-nav ul li {
-    margin: 2rem 0;
+    margin: 32px 0;
   }
 
   .overlay-nav ul li a {
     color: var(--background-color);
     text-decoration: none;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 19.2px;
   }
 
   .overlay-nav ul li a:hover {
     color: var(--primary-color);
   }
 
-  @media (max-width: 768px) {
+  .mobile {
+    background-color: var(--background-color);
+    color: var(--primary-color) !important;
+    padding: 0.6rem 1rem;
+    border-radius: 0.625rem;
+  }
+
+  @media (max-width: 48rem) {
     nav {
       display: none;
     }
@@ -87,9 +94,9 @@ import HamburgerWhite from "../../src/assets/hamburger_white.png";
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 48rem) {
     header {
-      padding: 1rem 1.25rem;
+      padding: 16px 20px;
     }
 
     .hamburger {
@@ -103,7 +110,7 @@ import HamburgerWhite from "../../src/assets/hamburger_white.png";
     nav ul {
       display: flex;
       justify-content: space-between;
-      width: 33.0625rem;
+      width: 529px;
     }
 
     nav li {
@@ -123,10 +130,10 @@ import HamburgerWhite from "../../src/assets/hamburger_white.png";
     nav ul li:nth-child(-n + 4)::after {
       content: "";
       position: absolute;
-      bottom: -4px;
+      bottom: -0.25rem;
       left: 0;
       width: 0;
-      height: 2px;
+      height: 0.125rem;
       background-color: var(--primary-color);
       transition: width 0.3s ease;
     }
@@ -137,10 +144,10 @@ import HamburgerWhite from "../../src/assets/hamburger_white.png";
 
     .button-registruotis {
       font-weight: 700;
-      border-radius: 0.3125rem;
+      border-radius: 5px;
       background-color: var(--primary-color);
       color: var(--background-color);
-      padding: 0.641rem 1.437rem;
+      padding: 10.256px 22.992px;
       transition: background-color 0.3s ease;
     }
 
@@ -148,13 +155,13 @@ import HamburgerWhite from "../../src/assets/hamburger_white.png";
       background-color: var(--secondary-color);
     }
 
-    @media (min-width: 1024px) {
+    @media (min-width: 64rem) {
       header {
-        padding: 1.2rem 2.5rem;
+        padding: 19.2px 40px;
       }
 
       nav ul {
-        width: 36.6875rem;
+        width: 587px;
       }
     }
   }
@@ -168,7 +175,7 @@ import HamburgerWhite from "../../src/assets/hamburger_white.png";
     <ul>
       <li><a href="/">Pagrindinis</a></li>
       <li><a href="/paslaugos">Paslaugos</a></li>
-      <li><a href="/straipsniai">Blogas</a></li>
+      <li><a href="/straipsniai">Straipsniai</a></li>
       <li><a href="/kontaktai">Kontaktai</a></li>
       <li>
         <a class="button-registruotis" href="/registracija">Registruotis</a>
@@ -194,10 +201,11 @@ import HamburgerWhite from "../../src/assets/hamburger_white.png";
   <ul>
     <li><a href="/">Pagrindinis</a></li>
     <li><a href="/paslaugos">Paslaugos</a></li>
-    <li><a href="/straipsniai">Blogas</a></li>
+    <li><a href="/straipsniai">Straipsniai</a></li>
     <li><a href="/kontaktai">Kontaktai</a></li>
     <li>
-      <a class="button-registruotis" href="/registracija">Registruotis</a>
+      <a class="mobile button-registruotis" href="/registracija">Registruotis</a
+      >
     </li>
   </ul>
 </div>

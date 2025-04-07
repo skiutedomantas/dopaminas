@@ -14,7 +14,7 @@ const getContent = async () => {
 
 const blogs = await getContent();
 
-const five = blogs.slice(0, 5);
+const five = blogs.slice(-5).reverse();
 const firstTen = blogs.slice(0, 9);
 const secondTen = blogs.slice(9, 18);
 ---
@@ -237,8 +237,12 @@ const secondTen = blogs.slice(9, 18);
       <div class="contacts">
         <h3>Sekite mane</h3>
         <div>
-          <Image class="icon" src={ig} alt="instagram" loading="lazy" />
-          <Image class="icon" src={fb} alt="facebook" loading="lazy" />
+          <a target="_blank" href="https://www.instagram.com/dopaminas.lt/">
+            <Image class="icon" src={ig} alt="instagram" loading="lazy" />
+          </a>
+          <a target="_blank" href="https://www.facebook.com/dopaminas.lt/">
+            <Image class="icon" src={fb} alt="facebook" loading="lazy" />
+          </a>
         </div>
       </div>
       <h4>Naujausi straipsniai</h4>
