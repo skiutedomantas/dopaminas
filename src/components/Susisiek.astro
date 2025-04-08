@@ -18,23 +18,20 @@ import ig from "../../src/assets/ig_black.png";
     font-weight: 600;
     line-height: normal;
   }
-  input {
-    width: 15.625rem;
-    height: 2.4375rem;
+  input,
+  textarea {
     border-radius: 0.3125rem;
     border: 1px solid var(--large-text-color);
     padding: 0.75rem 0.9375rem;
     background-color: var(--background-color);
+    width: 15.625rem;
   }
-
+  input {
+    height: 2.4375rem;
+  }
   textarea {
     resize: none;
-    width: 15.625rem;
     height: 7.875rem;
-    border-radius: 0.3125rem;
-    border: 1px solid var(--large-text-color);
-    padding: 0.75rem 0.9375rem;
-    background-color: var(--background-color);
   }
 
   button {
@@ -48,7 +45,6 @@ import ig from "../../src/assets/ig_black.png";
     font-weight: 600;
     transition: all 0.3s ease;
   }
-
   button:hover {
     background-color: var(--secondary-color);
     cursor: pointer;
@@ -76,11 +72,9 @@ import ig from "../../src/assets/ig_black.png";
     align-items: center;
     gap: 0.62rem;
   }
-
   .info-info a:hover {
     color: var(--primary-color);
   }
-
   .info-info img {
     width: 1.25rem;
     height: 1.25rem;
@@ -97,7 +91,6 @@ import ig from "../../src/assets/ig_black.png";
     line-height: normal;
     margin-bottom: 0.63rem;
   }
-
   .contact-info {
     margin-left: 2rem;
     display: flex;
@@ -108,7 +101,6 @@ import ig from "../../src/assets/ig_black.png";
   .input-group {
     position: relative;
   }
-
   .placeholder {
     color: var(--body-text-color);
     font-size: 0.75rem;
@@ -118,12 +110,20 @@ import ig from "../../src/assets/ig_black.png";
     transition: 0.3s;
     pointer-events: none;
   }
-
-  .input:focus + .placeholder {
+  .input:focus + .placeholder,
+  .input:not(:placeholder-shown) + .placeholder {
     padding: 0 5px;
     top: -10px;
     background-color: var(--background-color);
   }
+
+  input:-webkit-autofill {
+    background-color: var(--background-color) !important;
+    -webkit-box-shadow: 0 0 0px 1000px var(--background-color) inset !important;
+    -webkit-text-fill-color: var(--large-text-color) !important;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
   .background-image {
     position: absolute;
     max-width: 180px;
@@ -145,7 +145,6 @@ import ig from "../../src/assets/ig_black.png";
       justify-content: center;
       margin: 5rem 0;
     }
-
     .contact-form {
       border-bottom: none;
       border-right: 0.0625rem solid var(--large-text-color);
@@ -153,14 +152,10 @@ import ig from "../../src/assets/ig_black.png";
       padding-right: 3.12rem;
       align-items: start;
     }
-    input {
-      width: 19.0625rem;
-    }
-
+    input,
     textarea {
       width: 19.0625rem;
     }
-
     h2 {
       font-size: 2.25rem;
     }
@@ -182,22 +177,26 @@ import ig from "../../src/assets/ig_black.png";
     </div>
     <div class="contact-form">
       <h2>Parašykite mums</h2>
-
       <div class="input-group">
-        <input type="text" id="name" class="input" />
+        <input
+          type="text"
+          id="name"
+          class="input"
+          placeholder=" "
+          autocomplete="off"
+          required
+        />
         <label class="placeholder" for="name">Vardas</label>
       </div>
-
       <div class="input-group">
-        <input type="email" id="email" class="input" />
+        <input type="email" id="email" class="input" placeholder=" " required />
         <label class="placeholder" for="email">El. Paštas</label>
       </div>
-
       <div class="input-group">
-        <textarea id="message" class="input"></textarea>
+        <textarea id="message" class="input" placeholder=" " required
+        ></textarea>
         <label class="placeholder" for="message">Žinutė</label>
       </div>
-
       <button>Siųsti</button>
     </div>
 
@@ -239,6 +238,7 @@ import ig from "../../src/assets/ig_black.png";
       </div>
     </div>
   </div>
+
   <div class="map-container">
     <iframe
       title="maps"
@@ -248,6 +248,8 @@ import ig from "../../src/assets/ig_black.png";
       style="border:0;"
       allowfullscreen=""
       loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"></iframe>
+      referrerpolicy="no-referrer-when-downgrade"
+    >
+    </iframe>
   </div>
 </div>
