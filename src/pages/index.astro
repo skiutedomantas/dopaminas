@@ -7,9 +7,73 @@ import Paslaugos from "../components/Paslaugos.astro";
 import Uzsiregistruot from "../components/Uzsiregistruot.astro";
 import Base from "../layouts/Base.astro";
 import Straipsniai from "../components/Straipsniai.astro";
+import { Image } from "astro:assets";
+import dots_background from "../../src/assets/dots_background.svg";
+import dots_background1 from "../../src/assets/dots_background1.svg";
+import dots_background2 from "../../src/assets/dots_background2.svg";
+import lines_background from "../../src/assets/lines_background.svg";
+import crosses_background from "../../src/assets/crosses_background.svg";
+import crosses_background1 from "../../src/assets/crosses_background1.svg";
+import blob_background from "../../src/assets/blob_background.svg";
 ---
 
+<style>
+  .background-image {
+    position: absolute;
+    z-index: -2;
+  }
+  .dots {
+    bottom: -9%;
+    left: 0.5%;
+  }
+  .dots1 {
+    left: 58%;
+    bottom: -37%;
+  }
+
+  .dots2 {
+    left: 0.5%;
+    bottom: -204%;
+  }
+
+  .lines {
+    left: -2%;
+    bottom: -130%;
+    z-index: 1;
+  }
+
+  .blob {
+    bottom: -364%;
+  }
+
+  .cross {
+    left: 14%;
+    bottom: -155%;
+  }
+</style>
+
 <Base title="Pagrindinis">
+  <div class="background-image dots">
+    <Image src={dots_background} alt="background-image" />
+  </div>
+  <div class="background-image dots1">
+    <Image src={dots_background1} alt="background-image" />
+  </div>
+  <div class="background-image dots2">
+    <Image src={dots_background2} alt="background-image" />
+  </div>
+  <div class="background-image lines">
+    <Image src={lines_background} alt="background-image" />
+  </div>
+  <div class="background-image cross">
+    <Image src={crosses_background} alt="background-image" />
+  </div>
+  <div class="background-image cross1">
+    <Image src={crosses_background1} alt="background-image" />
+  </div>
+  <div class="background-image blob">
+    <Image src={blob_background} alt="background-image" />
+  </div>
   <Pagrindinis />
   <Paslaugos />
   <Apie />
