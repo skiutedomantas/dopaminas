@@ -16,7 +16,6 @@ const top = blogs.slice(-3).reverse();
     color: var(--large-text-color);
     font-size: 2rem;
     font-weight: 600;
-    line-height: normal;
   }
   .blog-text {
     padding: 0.8rem 1.94rem 2.05rem 1.55rem;
@@ -53,7 +52,7 @@ const top = blogs.slice(-3).reverse();
     color: var(--large-text-color);
     font-size: 1.25rem;
     font-weight: 600;
-    line-height: normal;
+    line-height: 1.2;
     margin-top: 0.62rem;
     margin-bottom: 0.37rem;
   }
@@ -113,7 +112,6 @@ const top = blogs.slice(-3).reverse();
     color: var(--large-text-color);
     font-size: 0.875rem;
     font-weight: 500;
-    line-height: normal;
     background-color: var(--soft-background-color);
     border-radius: 0.625rem;
     border: 2px solid var(--large-text-color);
@@ -130,6 +128,10 @@ const top = blogs.slice(-3).reverse();
   }
 
   @media (min-width: 768px) {
+    .main-container {
+      margin-top: 6.25rem;
+    }
+
     .popular-container {
       flex-direction: row;
       justify-content: start;
