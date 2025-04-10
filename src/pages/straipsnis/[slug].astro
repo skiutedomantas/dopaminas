@@ -54,8 +54,8 @@ const five = blogs.slice(0, 5);
     margin-top: 5rem;
     display: flex;
     justify-content: center;
-    flex-direction: row;
-    padding: 0 10%;
+    flex-direction: column;
+    padding: 0 5%;
     gap: 5rem;
   }
 
@@ -75,7 +75,7 @@ const five = blogs.slice(0, 5);
     line-height: 1.8;
   }
   .content-text img {
-    width: 500px;
+    width: 250px;
     margin: 3rem 0;
     display: block;
     margin-left: auto;
@@ -168,21 +168,6 @@ const five = blogs.slice(0, 5);
 
   .popular-blog:hover {
     color: var(--primary-color);
-  }
-
-  .contacts {
-    margin-bottom: 3rem;
-  }
-
-  .text-container {
-    flex: 3;
-    margin-bottom: 3rem;
-  }
-
-  .contact-container {
-    flex: 1;
-    border-left: 1px solid #383d431f;
-    padding-left: 4rem;
   }
 
   .contacts {
@@ -289,6 +274,27 @@ const five = blogs.slice(0, 5);
     transform-origin: 0 50%;
     animation: grow-progress auto linear;
     animation-timeline: --page-scroll;
+  }
+
+  @media (min-width: 768px) {
+    .main-container {
+      flex-direction: row;
+      padding: 0 10%;
+    }
+    .content-text img {
+      width: 500px;
+    }
+
+    .contact-container {
+      flex: 1;
+      border-left: 1px solid #383d431f;
+      padding-left: 4rem;
+    }
+
+    .text-container {
+      flex: 3;
+      margin-bottom: 3rem;
+    }
   }
 </style>
 
