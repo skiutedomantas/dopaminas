@@ -91,7 +91,7 @@ import arrowIcon from "../../src/assets/arrow.png";
     line-height: normal;
   }
 
-  button {
+  .susisiek {
     color: var(--large-text-color);
     font-size: 18px;
     font-weight: 700;
@@ -101,14 +101,19 @@ import arrowIcon from "../../src/assets/arrow.png";
     border-radius: 5px;
     border: 0.125rem solid var(--large-text-color);
     background: var(--background-color);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
     transition: all 0.3s ease;
   }
 
-  button:hover {
+  .susisiek:hover {
     color: var(--background-color);
     background-color: var(--large-text-color);
     cursor: pointer;
   }
+
   @media (min-width: 48rem) {
     .card-container {
       width: auto;
@@ -138,18 +143,51 @@ import arrowIcon from "../../src/assets/arrow.png";
     </div>
     <div class="card">
       <div class="card-title">
-        <h3>Kas yra Dopaminas?</h3>
+        <h3>Kodėl Dopaminas?</h3>
         <Image class="arrow-icon" src={arrowIcon} alt="icon" loading="lazy" />
       </div>
       <div class="card-text hidden">
-        Dopaminas yra neurotransmiteris – natūralus cheminis junginys gaminamas
-        organizme. Dopaminas dar kitaip vadinamas laimės hormonu, nes yra
-        atsakingas už pasitenkinimą, motyvaciją ir norą mokytis.
+        Reguliarus fizinis krūvis viena iš svarbiausių dalių siekiant palaikyti
+        gera fizinę bei psichinę sveikatą. Fizinio krūvio metu yra gaminamas
+        dopaminas, norepinefrinas bei serotoninas. Šios medžiagos padeda
+        palaikyti gerą nuotaiką ir savijautą. Todėl sukūrėme puslapį pavadinimu
+        – dopaminas.lt, kurio tikslas suteikti žmonėms daug naudingos nemokamos
+        informacijos apie: kineziterapiją, nugaros, kaklo, sąnarių skausmą,
+        galvos skausmą ir svaigimą, rankų, kojų tirpimą, laikyseną bei pratimus.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">
+        <h3>Kas yra Kineziterapija?</h3>
+        <Image class="arrow-icon" src={arrowIcon} alt="icon" loading="lazy" />
+      </div>
+      <div class="card-text hidden">
+        Kineziterapija – tai medicininė terapija, naudojanti judesio ir fizinius
+        pratimus kaip pagrindinį gydymo metodą. Jos tikslas – padėti atkurti
+        judėjimo funkcijas, sumažinti skausmą, pagerinti kūno mobilumą ir
+        stiprinti raumenis. Kineziterapija dažnai taikoma po traumų, operacijų,
+        raumenų ir sąnarių problemų, siekiant atstatyti normalią kūno funkciją
+        ir užkirsti kelią galimiems sutrikimams.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">
+        <h3>Ką daro Kineziterapeutai?</h3>
+        <Image class="arrow-icon" src={arrowIcon} alt="icon" loading="lazy" />
+      </div>
+      <div class="card-text hidden">
+        Kineziterapeutai yra sveikatos priežiūros specialistai, kurie
+        diagnozuoja ir gydytoja judėjimo sutrikimus. Jie naudojasi įvairiomis
+        metodikomis, įskaitant fizinius pratimus, mankštas, tempimo ir
+        stiprinimo technikas, siekiant atkurti kūno funkcijas. Kineziterapeutai
+        taip pat padeda žmonėms sužinoti, kaip išvengti traumų, patarti apie
+        tinkamą laikyseną ir judėjimą kasdienybėje, bei teikia individualias
+        reabilitacijos programas po traumos ar operacijos.
       </div>
     </div>
   </div>
   <h2 class="no-bold">Dar vis turite klausimu?</h2>
-  <button>Susisiek</button>
+  <a href="/kontaktai" class="susisiek">Susisiek</a>
 </div>
 
 <script>
