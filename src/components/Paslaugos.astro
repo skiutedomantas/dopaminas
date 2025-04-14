@@ -3,10 +3,26 @@ import { Image } from "astro:assets";
 import consult from "../../src/assets/doctor-consultation.png";
 import therapy from "../../src/assets/physical-therapy.png";
 import exercise from "../../src/assets/exercising.png";
+import dots_background from "../../src/assets/dots_background.svg";
+import dots_background1 from "../../src/assets/dots_background1.svg";
 ---
 
 <style>
+  .background-image {
+    position: absolute;
+    z-index: -2;
+  }
+  .dots {
+    top: 25%;
+    left: 0.5%;
+  }
+  .dots1 {
+    left: 58%;
+    bottom: -14%;
+  }
+
   .main-container {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -101,6 +117,12 @@ import exercise from "../../src/assets/exercising.png";
 </style>
 
 <div class="main-container">
+  <div class="background-image dots">
+    <Image src={dots_background} alt="background-image" />
+  </div>
+  <div class="background-image dots1">
+    <Image src={dots_background1} alt="background-image" />
+  </div>
   <h2>Paslaugos, kurias teikiu</h2>
   <div class="card-container">
     <a class="link" href="/paslaugos">

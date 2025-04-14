@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import icon from "../../src/assets/user.png";
+import crosses_background from "../../src/assets/crosses_background.svg";
 ---
 
 <style>
@@ -10,6 +11,7 @@ import icon from "../../src/assets/user.png";
   }
 
   .main-container {
+    position: relative;
     padding: 0.94rem;
     margin-top: 3.75rem;
     display: flex;
@@ -86,6 +88,16 @@ import icon from "../../src/assets/user.png";
     background-color: var(--large-text-color);
   }
 
+  .cross {
+    left: 12%;
+    top: 0;
+  }
+
+  .background-image {
+    position: absolute;
+    z-index: -2;
+  }
+
   @media (min-width: 768px) {
     .main-container {
       display: flex;
@@ -121,6 +133,9 @@ import icon from "../../src/assets/user.png";
 </style>
 
 <div class="main-container" id="testimonial-component">
+  <div class="background-image cross">
+    <Image src={crosses_background} alt="background-image" />
+  </div>
   <div class="left-side">
     <h2>Ką klientai sako apie mane</h2>
     <p>

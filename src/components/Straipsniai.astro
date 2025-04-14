@@ -9,9 +9,21 @@ const getContent = async () => {
 
 const blogs = await getContent();
 const top = blogs.slice(-3).reverse();
+
+import crosses_background1 from "../../src/assets/crosses_background1.svg";
+import { Image } from "astro:assets";
 ---
 
 <style>
+  .background-image {
+    position: absolute;
+    z-index: -2;
+  }
+
+  .cross1 {
+    bottom: -40%;
+    right: 10%;
+  }
   h1 {
     color: var(--large-text-color);
     font-size: 2rem;
@@ -124,6 +136,7 @@ const top = blogs.slice(-3).reverse();
     cursor: pointer;
   }
   .main-container {
+    position: relative;
     margin-top: 3.7rem;
   }
 
@@ -159,6 +172,9 @@ const top = blogs.slice(-3).reverse();
 </style>
 
 <div class="main-container">
+  <div class="background-image cross1">
+    <Image src={crosses_background1} alt="background-image" />
+  </div>
   <div class="header-container">
     <h1>Straipsniai</h1>
     <a class="skaityti-button" href="/straipsniai">Skaityti &rarr;</a>

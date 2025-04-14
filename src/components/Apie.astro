@@ -1,5 +1,11 @@
+---
+import { Image } from "astro:assets";
+import lines_background from "../../src/assets/lines_background.svg";
+---
+
 <style>
   .main-container {
+    position: relative;
     margin-top: 9.25rem;
   }
 
@@ -13,6 +19,17 @@
   .left-side {
     padding: 1rem;
     max-width: 34.375rem;
+  }
+
+  .background-image {
+    position: absolute;
+    z-index: -2;
+  }
+  .lines {
+    scale: 2;
+    left: 4%;
+    bottom: -3%;
+    z-index: 2;
   }
 
   @media (min-width: 768px) {
@@ -49,6 +66,9 @@
 </style>
 
 <div class="main-container">
+  <div class="background-image lines">
+    <Image src={lines_background} alt="background-image" />
+  </div>
   <div class="container">
     <div class="left-side">
       <h2>Apie mane</h2>

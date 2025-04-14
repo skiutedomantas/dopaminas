@@ -6,9 +6,23 @@ import ig from "../../src/assets/ig.png";
 import pin from "../../src/assets/pin.png";
 import email from "../../src/assets/email.png";
 import phone from "../../src/assets/phone-call.png";
+import blob_background from "../../src/assets/blob_background.svg";
+
+const { url } = Astro;
+const isHomePage = url.pathname === "/";
 ---
 
 <style>
+  .background-image {
+    position: absolute;
+    z-index: -2;
+  }
+
+  .blob {
+    top: -240%;
+    left: 0;
+  }
+
   .clickable:hover {
     color: var(--primary-color);
     cursor: pointer;
@@ -17,6 +31,7 @@ import phone from "../../src/assets/phone-call.png";
     transition: all 0.3s ease;
   }
   footer {
+    position: relative;
     background-color: var(--secondary-color);
     color: var(--background-color);
     padding: 1rem 0;
@@ -117,6 +132,13 @@ import phone from "../../src/assets/phone-call.png";
 
 <footer>
   <div class="container">
+    {
+      isHomePage && (
+        <div class="background-image blob">
+          <Image src={blob_background} alt="background-image" />
+        </div>
+      )
+    }
     <div class="first-container">
       <a href="/"
         ><Image class="logo" src={Logo} alt="Dopaminas" loading="lazy" /></a

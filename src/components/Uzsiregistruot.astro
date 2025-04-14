@@ -1,5 +1,11 @@
+---
+import { Image } from "astro:assets";
+import dots_background2 from "../../src/assets/dots_background2.svg";
+---
+
 <style>
   .main-container {
+    position: relative;
     background-color: var(--soft-background-color);
     display: flex;
     flex-direction: column;
@@ -43,6 +49,16 @@
     cursor: pointer;
   }
 
+  .background-image {
+    position: absolute;
+    z-index: -2;
+  }
+
+  .dots2 {
+    left: 0.5%;
+    top: -35%;
+  }
+
   @media (min-width: 768px) {
     h2 {
       font-size: 2.25rem;
@@ -79,6 +95,9 @@
 </style>
 
 <div class="main-container">
+  <div class="background-image dots2">
+    <Image src={dots_background2} alt="background-image" />
+  </div>
   <div class="text-container">
     <h2>Užsiregistruok vizitui</h2>
     <p>
