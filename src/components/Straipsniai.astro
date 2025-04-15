@@ -21,9 +21,11 @@ import { Image } from "astro:assets";
   }
 
   .cross1 {
-    bottom: -40%;
-    right: 10%;
+    scale: 0.8;
+    bottom: -10%;
+    right: 5%;
   }
+
   h1 {
     color: var(--large-text-color);
     font-size: 2rem;
@@ -138,9 +140,16 @@ import { Image } from "astro:assets";
   .main-container {
     position: relative;
     margin-top: 3.7rem;
+    margin-bottom: 7rem;
   }
 
   @media (min-width: 768px) {
+    .cross1 {
+      scale: 0.9;
+      bottom: -28%;
+      right: 5%;
+    }
+
     .main-container {
       margin-top: 6.25rem;
     }
@@ -157,6 +166,12 @@ import { Image } from "astro:assets";
     }
   }
   @media (min-width: 1024px) {
+    .cross1 {
+      scale: 1;
+      bottom: -40%;
+      right: 10%;
+    }
+
     .header-container {
       justify-content: start;
       margin-left: 5%;

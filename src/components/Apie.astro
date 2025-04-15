@@ -26,9 +26,9 @@ import lines_background from "../../src/assets/lines_background.svg";
     z-index: -2;
   }
   .lines {
-    scale: 2;
-    left: 4%;
-    bottom: -3%;
+    scale: 0.8;
+    left: -120%;
+    bottom: -2%;
     z-index: 2;
   }
 
@@ -57,10 +57,24 @@ import lines_background from "../../src/assets/lines_background.svg";
     img {
       max-width: 19.50888rem;
     }
+
+    .lines {
+      scale: 1.5;
+      left: -20%;
+      bottom: -3%;
+      z-index: 2;
+    }
   }
   @media (min-width: 1024px) {
     .container {
       gap: 7.56rem;
+    }
+
+    .lines {
+      scale: 2;
+      left: 4%;
+      bottom: -3%;
+      z-index: 2;
     }
   }
 </style>
