@@ -1,11 +1,11 @@
 ---
 import { Image } from "astro:assets";
-import hero from "../../src/assets/hero_mobile.png";
+import hero from "../../src/assets/pagrindine.png";
 ---
 
 <style>
   h1 {
-    color: var(--large-text-color);
+    color: var(--background-color);
     font-size: 2.1rem;
     line-height: 1.2;
     font-weight: 600;
@@ -13,10 +13,14 @@ import hero from "../../src/assets/hero_mobile.png";
   }
 
   .main-container {
-    background-color: #f1f5f9;
+    background-color: var(--primary-color);
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .main-container p {
+    color: var(--background-color);
   }
 
   .left-side {
@@ -35,26 +39,27 @@ import hero from "../../src/assets/hero_mobile.png";
     align-items: center;
     justify-content: center;
     border-radius: 0.625rem;
-    background: var(--primary-color);
-    color: var(--background-color);
+    background: var(--background-color);
+    color: var(--primary-color);
     text-decoration: none;
     font-size: 1.125rem;
     font-weight: 600;
     width: 8.75rem;
     height: 2.8125rem;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
   }
 
   .button-link:hover {
     background-color: var(--secondary-color);
+    color: var(--background-color);
     cursor: pointer;
   }
 
   .button-link.secondary {
-    background-color: #f1f5f9;
+    background-color: var(--primary-color);
     width: 8.125rem;
-    color: var(--large-text-color);
-    border: 2px solid var(--large-text-color);
+    color: var(--background-color);
+    border: 2px solid var(--background-color);
     transition: all 0.3s ease;
   }
 
@@ -103,9 +108,14 @@ import hero from "../../src/assets/hero_mobile.png";
   @media (min-width: 1024px) {
     h1 {
       font-size: 3rem;
+      margin-top: 4.6rem;
     }
     .hero-image {
-      max-width: 29.0625rem;
+      max-width: 33rem;
+    }
+
+    .button-container {
+      margin-bottom: 3.938rem;
     }
     .main-container {
       justify-content: center;

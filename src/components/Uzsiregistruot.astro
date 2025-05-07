@@ -6,7 +6,7 @@ import dots_background2 from "../../src/assets/dots_background2.svg";
 <style>
   .main-container {
     position: relative;
-    background-color: var(--soft-background-color);
+    background-color: var(--primary-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,13 +17,14 @@ import dots_background2 from "../../src/assets/dots_background2.svg";
   }
 
   h2 {
-    color: var(--large-text-color);
+    color: var(--background-color);
     font-size: 2rem;
     font-weight: 600;
     margin-bottom: 0.62rem;
   }
 
   .text-container {
+    color: var(--background-color);
     padding: 0 0.94rem;
     max-width: 34.375rem;
   }
@@ -33,11 +34,11 @@ import dots_background2 from "../../src/assets/dots_background2.svg";
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    color: var(--soft-background-color);
+    color: var(--primary-color);
     font-size: 1.25rem;
     font-weight: 600;
     border-radius: 0.625rem;
-    background-color: var(--primary-color);
+    background-color: var(--background-color);
     width: 11rem;
     height: 3rem;
     margin-top: 3.44rem;
@@ -46,6 +47,7 @@ import dots_background2 from "../../src/assets/dots_background2.svg";
 
   .button-link:hover {
     background-color: var(--secondary-color);
+    color: var(--background-color);
     cursor: pointer;
   }
 
@@ -57,6 +59,17 @@ import dots_background2 from "../../src/assets/dots_background2.svg";
   .dots2 {
     left: 2%;
     top: -16%;
+  }
+
+  .crop {
+    overflow: hidden;
+    height: 50px;
+  }
+
+  .dots1 {
+    bottom: -0%;
+    z-index: 2;
+    right: 30%;
   }
 
   @media (min-width: 768px) {
@@ -74,7 +87,7 @@ import dots_background2 from "../../src/assets/dots_background2.svg";
       justify-content: center;
       gap: 2.81rem;
       margin: 0;
-      padding: 1.94rem 0;
+      padding: 2.3rem 0;
     }
 
     .text-container {
@@ -99,7 +112,7 @@ import dots_background2 from "../../src/assets/dots_background2.svg";
 
     .main-container {
       margin-top: 6.25rem;
-      gap: 6.28rem;
+      gap: 7rem;
     }
   }
 </style>
@@ -109,6 +122,9 @@ import dots_background2 from "../../src/assets/dots_background2.svg";
     <Image src={dots_background2} alt="background-image" />
   </div>
   <div class="text-container">
+    <div class="background-image crop dots1">
+      <Image src={dots_background2} alt="background-image" />
+    </div>
     <h2>Užsiregistruok vizitui</h2>
     <p>
       Vizito registracija – tai pirmas žingsnis link teigiamo pokyčio. Kviečiu

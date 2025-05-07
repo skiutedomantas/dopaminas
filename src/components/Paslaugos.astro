@@ -42,6 +42,7 @@ import dots_background1 from "../../src/assets/dots_background1.svg";
   }
 
   .card {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -51,6 +52,17 @@ import dots_background1 from "../../src/assets/dots_background1.svg";
     padding: 1.25rem 1.5625rem;
     max-width: 21.875rem;
     transition: all 0.3s ease;
+  }
+
+  .card::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    height: 0.625rem;
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+    background-color: var(--primary-color);
+    transition: background-color 0.3s ease;
   }
 
   .card:hover {
@@ -133,6 +145,11 @@ import dots_background1 from "../../src/assets/dots_background1.svg";
       right: 30%;
       bottom: -14%;
     }
+    .stroke {
+      background-image: url("/src/assets/stroke.svg");
+      background-repeat: no-repeat;
+      background-position: bottom right;
+    }
   }
 </style>
 
@@ -143,7 +160,7 @@ import dots_background1 from "../../src/assets/dots_background1.svg";
   <div class="background-image dots1">
     <Image src={dots_background1} alt="background-image" />
   </div>
-  <h2>Paslaugos, kurias teikiu</h2>
+  <h2><span class="stroke">Paslaugos</span>, kurias teikiu</h2>
   <div class="card-container">
     <a class="link" href="/paslaugos">
       <div class="card">

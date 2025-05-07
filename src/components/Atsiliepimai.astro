@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import icon from "../../src/assets/user.png";
 import crosses_background from "../../src/assets/crosses_background.svg";
+import quotes from "../assets/quote.png";
 ---
 
 <style>
@@ -31,12 +32,19 @@ import crosses_background from "../../src/assets/crosses_background.svg";
     color: var(--large-text-color);
     font-size: 1rem;
     font-weight: 700;
+    margin-bottom: 3px;
+  }
+
+  .trumpesnis {
+    width: 185px !important;
   }
 
   .card-text p {
     color: var(--body-text-color);
     font-size: 0.875rem;
     font-style: normal;
+    line-height: 1.2;
+    width: 220px;
   }
 
   .left-side {
@@ -46,7 +54,7 @@ import crosses_background from "../../src/assets/crosses_background.svg";
 
   .card {
     display: flex;
-    max-width: 24.375rem;
+    max-width: 25rem;
     height: 6.875rem;
     align-items: center;
     gap: 0.5rem;
@@ -96,6 +104,19 @@ import crosses_background from "../../src/assets/crosses_background.svg";
   .background-image {
     position: absolute;
     z-index: -2;
+  }
+
+  .quote {
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    height: 26px;
+    width: 26px;
+    opacity: 20%;
+  }
+
+  .active-quote {
+    opacity: 100%;
   }
 
   @media (min-width: 768px) {
@@ -155,13 +176,17 @@ import crosses_background from "../../src/assets/crosses_background.svg";
   </div>
   <div class="card-container">
     <div class="card">
+      <Image class="quote" src={quotes} alt="quote" loading="lazy" />
       <Image class="user-icon" src={icon} alt="icon" loading="lazy" />
       <div class="card-text">
         <p class="vardas">Karolis</p>
-        <p>Dominyko atsidavimas jo darbui vertas aplodismentu.</p>
+        <p class="trumpesnis">
+          Dominyko atsidavimas jo darbui vertas aplodismentu.
+        </p>
       </div>
     </div>
     <div class="card" data-default>
+      <Image class="quote" src={quotes} alt="quote" loading="lazy" />
       <Image class="user-icon" src={icon} alt="icon" loading="lazy" />
       <div class="card-text">
         <p class="vardas">Gediminas</p>
@@ -171,6 +196,7 @@ import crosses_background from "../../src/assets/crosses_background.svg";
       </div>
     </div>
     <div class="card">
+      <Image class="quote" src={quotes} alt="quote" loading="lazy" />
       <Image class="user-icon" src={icon} alt="icon" loading="lazy" />
       <div class="card-text">
         <p class="vardas">Adomas</p>
@@ -189,16 +215,25 @@ import crosses_background from "../../src/assets/crosses_background.svg";
 
   if (window.matchMedia("(min-width: 768px)").matches) {
     let activeCard = container.querySelector(".card[data-default]");
+    let activeQuote = activeCard?.querySelector(".quote");
 
-    if (activeCard) {
+    if (activeCard && activeQuote) {
       activeCard.classList.add("active");
+      activeQuote.classList.add("active-quote");
     }
 
     function activateCard(card) {
       if (card === activeCard) return;
+
       activeCard.classList.remove("active");
+      activeQuote.classList.remove("active-quote");
+
       card.classList.add("active");
+      const newQuote = card.querySelector(".quote");
+      newQuote?.classList.add("active-quote");
+
       activeCard = card;
+      activeQuote = newQuote;
     }
 
     cards.forEach((card) => {

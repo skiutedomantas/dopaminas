@@ -11,6 +11,7 @@ const blogs = await getContent();
 const top = blogs.slice(-3).reverse();
 
 import crosses_background1 from "../../src/assets/crosses_background1.svg";
+import dots_background2 from "../../src/assets/dots_background2.svg";
 import { Image } from "astro:assets";
 ---
 
@@ -143,6 +144,23 @@ import { Image } from "astro:assets";
     margin-bottom: 7rem;
   }
 
+  .dots1 {
+    right: 1%;
+    top: 5%;
+  }
+
+  .dots2 {
+    left: 30%;
+    bottom: -5%;
+  }
+
+  .stroke {
+    background-image: url("/src/assets/stroke.svg");
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: 80%;
+  }
+
   @media (min-width: 768px) {
     .cross1 {
       scale: 0.9;
@@ -190,8 +208,14 @@ import { Image } from "astro:assets";
   <div class="background-image cross1">
     <Image src={crosses_background1} alt="background-image" />
   </div>
+  <div class="background-image dots1">
+    <Image src={dots_background2} alt="background-image" />
+  </div>
+  <div class="background-image dots2">
+    <Image src={dots_background2} alt="background-image" />
+  </div>
   <div class="header-container">
-    <h1>Straipsniai</h1>
+    <h1><span class="stroke">Straipsniai</span></h1>
     <a class="skaityti-button" href="/straipsniai">Skaityti &rarr;</a>
   </div>
   <div class="popular-container">
