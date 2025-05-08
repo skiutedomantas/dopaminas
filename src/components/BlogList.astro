@@ -12,9 +12,18 @@ const getContent = async () => {
   return data;
 };
 
+const getPopular = async () => {
+  const res = await fetch(
+    "http://localhost/wordpress/wp-json/wp/v2/straipsniai?&acf_format=standard&popular=3"
+  );
+  const popular = await res.json();
+  return popular;
+};
+
+const top = await getPopular();
+
 const blogs = await getContent();
 
-const five = blogs.slice(-5).reverse();
 const firstTen = blogs.slice(0, 9);
 const secondTen = blogs.slice(9, 18);
 ---
@@ -254,7 +263,7 @@ const secondTen = blogs.slice(9, 18);
       <div class="popular">
         <ul>
           {
-            five.map((blog) => (
+            top.map((blog) => (
               <li class="popular-blog">
                 <a href={`/straipsnis/${blog.slug}`}>{blog.title.rendered}</a>
               </li>
