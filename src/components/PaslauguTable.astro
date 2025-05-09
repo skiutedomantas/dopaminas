@@ -1,0 +1,190 @@
+---
+import { Image } from "astro:assets";
+
+import arrow from "../assets/arrow_white.png";
+import dots_background2 from "../../src/assets/dots_background2.svg";
+import crosses_background from "../../src/assets/crosses_background.svg";
+---
+
+<style>
+  .background-image {
+    position: absolute;
+    z-index: -2;
+  }
+
+  .dots1 {
+    right: 21%;
+    bottom: -8%;
+  }
+
+  .cross {
+    top: 5%;
+    left: 18%;
+  }
+
+  h1 {
+    margin-bottom: 50px;
+    color: var(--large-text-color);
+    font-size: 2.25rem;
+    font-weight: 600;
+  }
+
+  .stroke {
+    background-image: url("/src/assets/stroke.svg");
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: 70%;
+  }
+
+  .main-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4.4rem;
+    margin-bottom: 6.25rem;
+  }
+  table {
+    background-color: var(--background-color);
+    border-collapse: separate;
+    border-spacing: 0.5rem;
+    overflow: hidden;
+  }
+
+  thead {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+  }
+
+  th,
+  td {
+    height: 75px;
+    border-radius: 0.31rem;
+    padding: 0 0.63rem;
+    text-align: left;
+    margin-right: 0.5rem;
+  }
+
+  th:first-of-type {
+    padding: 0.625rem 1.375rem;
+    text-align: start;
+  }
+
+  th {
+    text-align: center;
+    font-weight: 500;
+    font-size: 1rem;
+  }
+
+  td {
+    background-color: var(--soft-background-color);
+    text-align: center;
+  }
+
+  a.arrow-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    width: 16px;
+    transition: transform 0.3s;
+  }
+
+  a.arrow-link:hover {
+    transform: translateX(4px);
+  }
+
+  .paslauga {
+    width: 20.187rem;
+    padding-left: 1.38rem;
+    text-align: start;
+  }
+
+  .trukme {
+    width: 12.3rem;
+  }
+
+  .kaina {
+    width: 9.875rem;
+  }
+
+  .link {
+    width: 4.7rem;
+  }
+
+  .link-cell {
+    background-color: var(--primary-color);
+  }
+</style>
+<div class="main-container">
+  <div class="background-image cross">
+    <Image src={crosses_background} alt="background-image" />
+  </div>
+  <div class="background-image dots1">
+    <Image src={dots_background2} alt="background-image" />
+  </div>
+  <h1><span class="stroke">Paslaugos</span></h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Paslauga</th>
+        <th class="trukme">Trukmė</th>
+        <th class="kaina">Kaina</th>
+        <th class="link"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="paslauga">Pirminė kineziterapeuto <br /> konsultacija</td>
+        <td>Iki 60min.</td>
+        <td>60 €</td>
+        <td class="link-cell"
+          ><a href="/paslaugos/pirminė-konsultacija" class="arrow-link">
+            <Image src={arrow} alt="arrow-icon" />
+          </a></td
+        >
+      </tr>
+      <tr>
+        <td class="paslauga">Pakartotinė kineziterapeuto <br /> konsultacija</td
+        >
+        <td>Iki 45min.</td>
+        <td>50 €</td>
+        <td class="link-cell"
+          ><a href="/paslaugos/pakartotine-konsultacija" class="arrow-link">
+            <Image src={arrow} alt="arrow-icon" />
+          </a></td
+        >
+      </tr>
+      <tr>
+        <td class="paslauga">Manualinė terapija</td>
+        <td>Iki 45min.</td>
+        <td>50 €</td>
+        <td class="link-cell"
+          ><a href="/paslaugos/manualine-terapija" class="arrow-link">
+            <Image src={arrow} alt="arrow-icon" />
+          </a></td
+        >
+      </tr>
+      <tr>
+        <td class="paslauga">Kineziterapija</td>
+        <td>Iki 45min.</td>
+        <td>40 €</td>
+        <td class="link-cell"
+          ><a href="/paslaugos/kineziterapija" class="arrow-link">
+            <Image src={arrow} alt="arrow-icon" />
+          </a></td
+        >
+      </tr>
+      <tr>
+        <td class="paslauga">Mėnesinė narystė</td>
+        <td>1 mėn.</td>
+        <td>50 €</td>
+        <td class="link-cell"
+          ><a href="/paslaugos/menesine-naryste" class="arrow-link">
+            <Image src={arrow} alt="arrow-icon" />
+          </a></td
+        >
+      </tr>
+    </tbody>
+  </table>
+</div>
