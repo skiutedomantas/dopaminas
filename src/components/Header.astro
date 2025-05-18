@@ -51,6 +51,7 @@ import HamburgerWhite from "../../src/assets/hamburger_white.png";
     align-items: center;
     flex-direction: column;
     padding: 16px;
+    overflow-y: auto;
   }
 
   .overlay-nav ul {
@@ -79,6 +80,10 @@ import HamburgerWhite from "../../src/assets/hamburger_white.png";
     color: var(--primary-color) !important;
     padding: 0.6rem 1rem;
     border-radius: 0.625rem;
+  }
+
+  .service-category {
+    margin-bottom: 8px !important;
   }
 
   @media (max-width: 48rem) {
@@ -143,6 +148,64 @@ import HamburgerWhite from "../../src/assets/hamburger_white.png";
       width: 100%;
     }
 
+    nav ul li.dropdown {
+      position: relative;
+    }
+
+    nav ul li.dropdown .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 70%;
+      left: -15%;
+      background-color: var(--soft-background-color);
+      min-width: 200px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      border-radius: 0.5rem;
+      padding: 0.5rem 0;
+      z-index: 1000;
+      margin-top: 0.5rem;
+    }
+
+    nav ul li.dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    nav ul li.dropdown .dropdown-content {
+      width: auto;
+    }
+
+    nav ul li.dropdown .dropdown-content li {
+      display: block;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li.dropdown .dropdown-content li a {
+      color: var(--large-text-color);
+      padding: 0.75rem 1rem;
+      display: block;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      white-space: nowrap;
+    }
+
+    nav ul li.dropdown .dropdown-content li a:hover {
+      background-color: var(--soft-background-color);
+      color: var(--primary-color);
+    }
+    nav ul li.dropdown .dropdown-toggle::after {
+      content: "";
+      display: inline-block;
+      background-image: url("../../src/assets/arrow_down.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      width: 12px;
+      height: 12px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
     .button-registruotis {
       font-weight: 700;
       border-radius: 5px;
@@ -175,7 +238,21 @@ import HamburgerWhite from "../../src/assets/hamburger_white.png";
   <nav>
     <ul>
       <li><a href="/">Pagrindinis</a></li>
-      <li><a href="/paslaugos">Paslaugos</a></li>
+      <li class="dropdown">
+        <a href="/paslaugos" class="dropdown-toggle">Paslaugos</a>
+        <ul class="dropdown-content">
+          <li><a href="/paslaugos/kineziterapija">Kineziterapija</a></li>
+          <li>
+            <a href="/paslaugos/manualine-terapija">Manualinė terapija</a>
+          </li>
+          <li>
+            <a href="/paslaugos/pakartotine-konsultacija"
+              >Pakartotinė konsultacija</a
+            >
+          </li>
+          <li><a href="/paslaugos/menesine-naryste">Mėnesinė narystė</a></li>
+        </ul>
+      </li>
       <li><a href="/straipsniai">Straipsniai</a></li>
       <li><a href="/kontaktai">Kontaktai</a></li>
       <li>
@@ -201,7 +278,19 @@ import HamburgerWhite from "../../src/assets/hamburger_white.png";
   />
   <ul>
     <li><a href="/">Pagrindinis</a></li>
-    <li><a href="/paslaugos">Paslaugos</a></li>
+    <li class="service-category"><a href="/paslaugos">Paslaugos</a></li>
+    <li class="service-category">
+      <a href="/paslaugos/kineziterapija">Kineziterapija</a>
+    </li>
+    <li class="service-category">
+      <a href="/paslaugos/manualine-terapija">Manualinė terapija</a>
+    </li>
+    <li class="service-category">
+      <a href="/paslaugos/pakartotine-konsultacija">Pakartotinė konsultacija</a>
+    </li>
+    <li class="service-category">
+      <a href="/paslaugos/menesine-naryste">Mėnesinė narystė</a>
+    </li>
     <li><a href="/straipsniai">Straipsniai</a></li>
     <li><a href="/kontaktai">Kontaktai</a></li>
     <li>

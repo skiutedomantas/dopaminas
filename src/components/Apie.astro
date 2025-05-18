@@ -31,9 +31,14 @@ import exercise2 from "../../src/assets/exercise2.png";
 
   .img-container img {
     border-radius: 10px;
+    box-shadow: 8px 8px 0px 0px #296fd6;
     -webkit-filter: grayscale(100%);
     filter: grayscale(100%);
     transition: all 0.3s ease;
+  }
+
+  .reversed img {
+    box-shadow: -8px -8px 0px 0px #296fd6;
   }
 
   .img-container img:hover {
@@ -98,7 +103,7 @@ import exercise2 from "../../src/assets/exercise2.png";
         ir sustiprinti jūsų kūną.
       </p>
     </div>
-    <div class="img-container">
+    <div class="img-container reversed">
       <Image src={liniuote} alt="kineziterapija" />
     </div>
   </div>
