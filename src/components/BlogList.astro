@@ -22,7 +22,7 @@ const getPopular = async () => {
 
 const top = await getPopular();
 
-const blogs = await getContent();
+const blogs = (await getContent()).reverse();
 
 const firstTen = blogs.slice(0, 9);
 const secondTen = blogs.slice(9, 18);
@@ -259,7 +259,7 @@ const secondTen = blogs.slice(9, 18);
           </a>
         </div>
       </div>
-      <h4>Naujausi straipsniai</h4>
+      <h4>Populiarūs straipsniai</h4>
       <div class="popular">
         <ul>
           {

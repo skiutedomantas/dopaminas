@@ -1,0 +1,426 @@
+---
+import Image from "astro/components/Image.astro";
+import Base from "../../layouts/Base.astro";
+import money from "../../../src/assets/dollar_blue.png";
+import time from "../../../src/assets/clock_blue.png";
+import arrow from "../../../src/assets/blue_arrow.png";
+import dots_background2 from "../../../src/assets/dots_background2.svg";
+import crosses_background1 from "../../../src/assets/crosses_background1.svg";
+---
+
+<style>
+  main {
+    position: relative;
+  }
+  .background-image {
+    position: absolute;
+    z-index: -2;
+  }
+
+  .cross1 {
+    opacity: 0;
+  }
+
+  .dots1 {
+    right: 1%;
+    bottom: 1%;
+  }
+
+  .dots2 {
+    opacity: 0;
+  }
+
+  .consultation-container {
+    width: 100%;
+    padding: 1.5rem 1rem;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  .consultation-header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .consultation-breadcrumb {
+    color: var(--primary-color);
+    font-size: 0.75rem;
+    margin-bottom: 9px;
+  }
+
+  .consultation-breadcrumb a {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+
+  .breadcrumb-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .arrow-icon {
+    height: 10px;
+    width: 10px;
+    margin-right: 0.7rem;
+  }
+
+  .icon {
+    width: 0.53569rem;
+    height: 0.53569rem;
+    margin-right: 0.2rem;
+  }
+
+  .consultation-breadcrumb .divider {
+    margin: 0 0.25rem;
+  }
+
+  .consultation-header h1 {
+    line-height: 1.2;
+    max-width: 27rem;
+    font-size: 2.25rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    color: var(--large-text-color);
+  }
+
+  .consultation-description {
+    max-width: 24rem;
+    color: var(--body-text-color);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .for-whom-section {
+    width: 100%;
+    background-color: var(--soft-background-color);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 4rem;
+    margin-top: 2.5rem;
+    border-radius: 0.625rem;
+    box-shadow: 0px 2px 5px 0px rgba(20, 37, 61, 0.1);
+    position: relative;
+  }
+
+  .for-whom-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0.625rem;
+    border-radius: 0.8125rem 0rem 0rem 0.8125rem;
+    background-color: var(--primary-color);
+  }
+
+  .for-whom-section p {
+    line-height: 1.6;
+  }
+
+  .for-whom-section h2 {
+    margin-bottom: 0.81rem;
+    color: var(--body-text-color);
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .how-it-works {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .how-it-works h2 {
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--large-text-color);
+  }
+
+  .steps-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .step {
+    display: flex;
+    text-align: left;
+    position: relative;
+  }
+
+  .step-number {
+    width: 90px;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border-radius: 0.9375rem 0rem 0rem 0.9375rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+    flex-shrink: 0;
+    padding-right: 10px;
+    margin-right: -0.875rem;
+  }
+
+  .step-content {
+    background-color: var(--soft-background-color);
+    padding: 1rem;
+    border-radius: 0.9375rem;
+    flex: 1;
+  }
+
+  .step-content h3 {
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin-bottom: 0.1rem;
+    color: var(--large-text-color);
+  }
+
+  .step-content p {
+    color: var(--body-text-color);
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 25rem;
+  }
+
+  .step-5 {
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .cross1 {
+      opacity: 1;
+      right: 5%;
+      top: 25%;
+    }
+
+    .dots1 {
+      right: 1%;
+      bottom: 15%;
+    }
+
+    .dots2 {
+      opacity: 1;
+      right: 1%;
+      top: 10%;
+    }
+
+    .consultation-container {
+      padding: 2rem 1.5rem;
+    }
+
+    .consultation-breadcrumb .divider {
+      margin: 0 0.5rem;
+    }
+
+    .for-whom-section {
+      width: 80%;
+      padding: 1.8rem 3rem;
+      margin-bottom: 3.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .how-it-works {
+      margin-bottom: 3.5rem;
+    }
+
+    .how-it-works h2 {
+      font-size: 2rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .steps-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 60px;
+    }
+
+    .step-number {
+      font-size: 50px;
+      height: 100%;
+    }
+
+    .step-content {
+      padding: 1.25rem;
+    }
+
+    .step-content h3 {
+      font-size: 1.2rem;
+    }
+
+    .step-content p {
+      font-size: 0.9rem;
+      max-width: 17.2rem;
+    }
+
+    .step-5 {
+      grid-column: span 2;
+      max-width: 75%;
+      margin: 0 auto;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .cross1 {
+      opacity: 1;
+      right: 10%;
+      top: 40%;
+    }
+
+    .dots1 {
+      right: 1%;
+      bottom: 15%;
+    }
+
+    .dots2 {
+      opacity: 1;
+      right: 1%;
+      top: 10%;
+    }
+
+    .consultation-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2.5rem 1rem;
+    }
+
+    .for-whom-section {
+      margin-top: 5.6rem;
+      margin-bottom: 5.4rem;
+    }
+
+    .for-whom-section h2 {
+      font-size: 1.25rem;
+    }
+
+    .how-it-works {
+      margin-bottom: 4rem;
+    }
+
+    .step-number {
+      font-size: 64px;
+    }
+
+    .step-content {
+      padding: 1.5rem;
+    }
+
+    .step-content h3 {
+      font-size: 1.25rem;
+    }
+
+    .step-content p {
+      font-size: 0.95rem;
+    }
+
+    .step-5 {
+      max-width: 50%;
+    }
+  }
+</style>
+
+<Base title="Pirminė kineziterapeuto konsultacija">
+  <main>
+    <div class="background-image cross1">
+      <Image src={crosses_background1} alt="background-image" />
+    </div>
+    <div class="background-image dots1">
+      <Image src={dots_background2} alt="background-image" />
+    </div>
+    <div class="background-image dots2">
+      <Image src={dots_background2} alt="background-image" />
+    </div>
+    <div class="consultation-container">
+      <div class="consultation-breadcrumb">
+        <a href="/paslaugos" class="breadcrumb-container">
+          <Image class="arrow-icon" src={arrow} alt="arrow" />
+          <span><Image class="icon" src={time} alt="clock" /></span>
+          <span>IKI 60 MIN</span>
+          <span class="divider">|</span>
+          <span> <Image class="icon" src={money} alt="money" /></span>
+          <span class="time">60€</span>
+        </a>
+      </div>
+      <div class="consultation-header">
+        <h1>Pirminė kineziterapeuto konsultacija</h1>
+        <p class="consultation-description">
+          Konsultacija pasirenkama kreipiantis pirmą kartą arba pakartotinai,
+          tačiau dėl naujų klausimų.
+        </p>
+      </div>
+
+      <section class="for-whom-section">
+        <h2>Kam skirta?</h2>
+        <p>
+          ✔️ Stuburo ir sąnarių skausmui mažinti <br /> ✔️ Raumenų įtampai ir skausmui
+          malšinti <br /> ✔️ Galvos skausmams ar migrenai, susijusiai su laikysena
+          ar raumenų įtampa <br /> ✔️ Netaisyklingai laikysenai koreguoti <br />
+          ✔️ Norint sustiprėti, bet nežinant, nuo ko pradėti <br /> ✔️ Atsistatymui
+          po traumos ar pasiruošimui operacijai <br /> ✔️ Reabilitacijai po operacijos
+        </p>
+      </section>
+
+      <section class="how-it-works">
+        <h2>Kaip vyksta konsultacija?</h2>
+
+        <div class="steps-container">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Pokalbis</h3>
+              <p>
+                Aptariame, kur ir kada jaučiate skausmą, kaip jis kinta ir kas
+                jį gali sukelti bei kitus svarbius aspektus.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>Testavimas</h3>
+              <p>
+                Įvertiname Jūsų laikyseną, raumenų ir sąnarių būklę bei galimas
+                sąsajas su skausmu.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>Pratimai</h3>
+              <p>
+                Parodome 1-5 tikslinius pratimus, kurie sustiprinš silpniausias
+                vietas (pratimai pateikiami video formatu).
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h3>Manualinė Terapija</h3>
+              <p>
+                Jei reikalinga, atliekame manualinę terapiją skausmo ir įtampos
+                mažinimui.
+              </p>
+            </div>
+          </div>
+
+          <div class="step step-5">
+            <div class="step-number">5</div>
+            <div class="step-content">
+              <h3>Rekomendacijos</h3>
+              <p>
+                Patariame, ką daryti, ko vengti, kad greičiau pasveiktumėte.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</Base>

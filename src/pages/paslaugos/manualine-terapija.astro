@@ -1,0 +1,517 @@
+---
+import Image from "astro/components/Image.astro";
+import Base from "../../layouts/Base.astro";
+import money from "../../../src/assets/dollar_blue.png";
+import time from "../../../src/assets/clock_blue.png";
+import arrow from "../../../src/assets/blue_arrow.png";
+import dots_background2 from "../../../src/assets/dots_background2.svg";
+import crosses_background1 from "../../../src/assets/crosses_background1.svg";
+import therapy1 from "../../../src/assets/therapy1.png";
+import therapy2 from "../../../src/assets/therapy2.png";
+import therapy3 from "../../../src/assets/therapy3.png";
+---
+
+<style is:global>
+  main {
+    position: relative;
+  }
+  .background-image {
+    position: absolute;
+    z-index: -2;
+  }
+
+  .cross1 {
+    opacity: 0;
+  }
+
+  .dots1 {
+    right: 1%;
+    bottom: 1%;
+  }
+
+  .dots2 {
+    opacity: 0;
+  }
+
+  .consultation-container {
+    width: 100%;
+    padding: 1.5rem 1rem;
+    position: relative;
+  }
+
+  .consultation-header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .consultation-breadcrumb {
+    color: var(--primary-color);
+    font-size: 0.75rem;
+    margin-bottom: 9px;
+  }
+
+  .consultation-breadcrumb a {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+
+  .breadcrumb-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .arrow-icon {
+    height: 10px;
+    width: 10px;
+    margin-right: 0.7rem;
+  }
+
+  .icon {
+    width: 0.53569rem;
+    height: 0.53569rem;
+    margin-right: 0.2rem;
+  }
+
+  .consultation-breadcrumb .divider {
+    margin: 0 0.25rem;
+  }
+
+  .consultation-header h1 {
+    line-height: 1.2;
+    max-width: 27rem;
+    font-size: 2.25rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    color: var(--large-text-color);
+  }
+
+  .consultation-description {
+    max-width: 24rem;
+    color: var(--body-text-color);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .for-whom-section {
+    width: 100%;
+    background-color: var(--soft-background-color);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 4rem;
+    margin-top: 2.5rem;
+    border-radius: 0.625rem;
+    box-shadow: 0px 2px 5px 0px rgba(20, 37, 61, 0.1);
+    position: relative;
+  }
+
+  .for-whom-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0.625rem;
+    border-radius: 0.8125rem 0rem 0rem 0.8125rem;
+    background-color: var(--primary-color);
+  }
+
+  .for-whom-section p {
+    line-height: 1.6;
+  }
+
+  .for-whom-section h2 {
+    margin-bottom: 0.81rem;
+    color: var(--body-text-color);
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .carousel-section {
+    margin-bottom: 4rem;
+    position: relative;
+  }
+
+  .carousel-container {
+    overflow: hidden;
+    position: relative;
+    border-radius: 0.625rem;
+  }
+
+  .carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+
+  .carousel-slide {
+    flex: 0 0 353px;
+    max-width: 100%;
+    padding: 0 5px;
+  }
+
+  .carousel-slide img {
+    width: 100%;
+    max-width: 353px;
+    height: 282px;
+    object-fit: cover;
+    border-radius: 0.625rem;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    transition: all 0.3s ease;
+  }
+
+  .carousel-slide img:hover {
+    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
+  }
+
+  .carousel-indicators {
+    height: 0.8rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .carousel-indicator {
+    width: 0.8rem;
+    background-color: #c7d7f0;
+    border-radius: 60%;
+    cursor: pointer;
+  }
+
+  .carousel-indicator.active {
+    background-color: var(--primary-color);
+  }
+
+  .cta-section {
+    background-color: #1e4b8e;
+    color: white;
+    padding: 1.5rem;
+    border-radius: 0.625rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    text-align: center;
+  }
+
+  .cta-text {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .cta-button {
+    background-color: white;
+    color: #1e4b8e;
+    border: none;
+    border-radius: 4px;
+    padding: 0.75rem 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background-color: #f0f0f0;
+  }
+
+  @media (min-width: 768px) {
+    .cross1 {
+      opacity: 1;
+      right: 5%;
+      top: 25%;
+    }
+
+    .dots1 {
+      right: 1%;
+      bottom: 15%;
+    }
+
+    .dots2 {
+      opacity: 1;
+      right: 1%;
+      top: 10%;
+    }
+
+    .consultation-container {
+      padding: 2rem 1.5rem;
+    }
+
+    .consultation-breadcrumb .divider {
+      margin: 0 0.5rem;
+    }
+
+    .for-whom-section {
+      width: 80%;
+      padding: 1.8rem 3rem;
+      margin-bottom: 3.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .carousel-section {
+      margin-bottom: 3.5rem;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .carousel-slide {
+      flex: 0 0 353px;
+      max-width: 353px;
+    }
+
+    .cta-section {
+      padding: 2rem;
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+    }
+
+    .cta-text {
+      font-size: 1.1rem;
+      max-width: 70%;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .cross1 {
+      opacity: 1;
+      right: 10%;
+      top: 40%;
+    }
+
+    .dots1 {
+      right: 1%;
+      bottom: 15%;
+    }
+
+    .dots2 {
+      opacity: 1;
+      right: 1%;
+      top: 10%;
+    }
+
+    .consultation-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2.5rem 1rem;
+    }
+
+    .for-whom-section {
+      margin-top: 5.6rem;
+      margin-bottom: 5.4rem;
+    }
+
+    .for-whom-section h2 {
+      font-size: 1.25rem;
+    }
+
+    .carousel-section {
+      margin-bottom: 4rem;
+    }
+
+    .carousel-track {
+      gap: 1.5rem;
+    }
+
+    .cta-section {
+      padding: 2.5rem;
+    }
+
+    .cta-text {
+      font-size: 1.2rem;
+      max-width: 60%;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const carouselSection = document.querySelector(".carousel-section");
+    const track = document.querySelector(".carousel-track");
+    const slides = document.querySelectorAll(".carousel-slide");
+    const indicatorsContainer = document.querySelector(".carousel-indicators");
+
+    if (track && slides.length && indicatorsContainer) {
+      let currentIndex = 0;
+      const slideCount = slides.length;
+      let visibleSlides = 1;
+
+      function createIndicators(count) {
+        indicatorsContainer.innerHTML = "";
+
+        if (count >= slideCount) {
+          indicatorsContainer.style.display = "none";
+          return;
+        }
+
+        indicatorsContainer.style.display = "flex";
+
+        const totalGroups = Math.ceil(slideCount / count);
+
+        for (let i = 0; i < totalGroups; i++) {
+          const indicator = document.createElement("div");
+          indicator.classList.add("carousel-indicator");
+          indicator.setAttribute("aria-label", `Slide ${i + 1}`);
+
+          if (i === 0) {
+            indicator.classList.add("active");
+            indicator.setAttribute("aria-current", "true");
+          }
+
+          indicator.addEventListener("click", () => {
+            currentIndex = i;
+            updateCarousel();
+          });
+
+          indicatorsContainer.appendChild(indicator);
+        }
+      }
+
+      function updateCarouselLayout() {
+        const containerWidth = carouselSection.offsetWidth;
+        const slideWidth = 353;
+        const gap = window.innerWidth >= 1024 ? 24 : 16;
+
+        visibleSlides = Math.floor(containerWidth / (slideWidth + gap));
+
+        visibleSlides = Math.max(1, Math.min(visibleSlides, slideCount));
+
+        createIndicators(visibleSlides);
+
+        currentIndex = 0;
+        updateCarousel();
+      }
+
+      function updateCarousel() {
+        let slideWidthPercentage;
+        if (window.innerWidth >= 1024) {
+          slideWidthPercentage = 30;
+        } else if (window.innerWidth >= 900) {
+          slideWidthPercentage = 28;
+        } else if (window.innerWidth >= 768) {
+          slideWidthPercentage = 26;
+        } else if (window.innerWidth >= 650) {
+          slideWidthPercentage = 35;
+        } else if (window.innerWidth >= 550) {
+          slideWidthPercentage = 52;
+        } else if (window.innerWidth >= 450) {
+          slideWidthPercentage = 78;
+        } else if (window.innerWidth >= 425) {
+          slideWidthPercentage = 85;
+        } else if (window.innerWidth >= 375) {
+          slideWidthPercentage = 92;
+        } else {
+          slideWidthPercentage = 100;
+        }
+        const slideWidth = slideWidthPercentage / visibleSlides;
+
+        const maxIndex = slideCount - visibleSlides;
+        const limitedIndex = Math.min(currentIndex, maxIndex);
+
+        track.style.transform = `translateX(-${limitedIndex * slideWidth}%)`;
+
+        const indicators = document.querySelectorAll(".carousel-indicator");
+        indicators.forEach((indicator, index) => {
+          if (index === currentIndex) {
+            indicator.classList.add("active");
+            indicator.setAttribute("aria-current", "true");
+          } else {
+            indicator.classList.remove("active");
+            indicator.setAttribute("aria-current", "false");
+          }
+        });
+      }
+
+      updateCarouselLayout();
+
+      let resizeTimer;
+      window.addEventListener("resize", () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          updateCarouselLayout();
+        }, 250);
+      });
+    }
+  });
+</script>
+
+<Base title="Manualinė terapija">
+  <main>
+    <div class="background-image cross1">
+      <Image src={crosses_background1} alt="background-image" />
+    </div>
+    <div class="background-image dots1">
+      <Image src={dots_background2} alt="background-image" />
+    </div>
+    <div class="background-image dots2">
+      <Image src={dots_background2} alt="background-image" />
+    </div>
+    <div class="consultation-container">
+      <div class="consultation-breadcrumb">
+        <a href="/paslaugos" class="breadcrumb-container">
+          <Image class="arrow-icon" src={arrow} alt="arrow" />
+          <span><Image class="icon" src={time} alt="clock" /></span>
+          <span>IKI 45 MIN</span>
+          <span class="divider">|</span>
+          <span> <Image class="icon" src={money} alt="money" /></span>
+          <span class="time">50€</span>
+        </a>
+      </div>
+      <div class="consultation-header">
+        <h1>Manualinė terapija</h1>
+        <p class="consultation-description">
+          Manualinės terapijos metu specialiais rankų judesiais mažinama raumenų
+          įtampa, gerinamas sąnarių judrumas ir mažinamas skausmas.
+        </p>
+      </div>
+
+      <section class="for-whom-section">
+        <h2>Kam skirta?</h2>
+        <p>
+          ✔️ Jaučiate nugaros, kaklo, pečių ar juosmens skausmus <br />
+          ✔️ Kamuoja raumenų įtampa ar sąstingis po ilgo sėdėjimo <br />
+          ✔️ Turite ribotą sąnarių judrumą ar jaučiate jų „užstrigimą" <br />
+          ✔️ Atsirado skausmas po traumos ar operacijos <br />
+          ✔️ Kenčiate nuo galvos skausmų, susijusių su įtampa kaklo srityje <br
+          />
+          ✔️ Jaučiate dilgčiojimą ar nutirpimą rankose ar kojose dėl raumenų ar nervų
+          spaudimo
+        </p>
+      </section>
+      <section class="carousel-section">
+        <div class="carousel-container">
+          <div class="carousel-track">
+            <div class="carousel-slide">
+              <Image src={therapy1} alt="Manualine-terapija" />
+            </div>
+            <div class="carousel-slide">
+              <Image src={therapy2} alt="Manualine-terapija" />
+            </div>
+            <div class="carousel-slide">
+              <Image src={therapy3} alt="Manualine-terapija" />
+            </div>
+          </div>
+        </div>
+        <div
+          class="carousel-indicators"
+          role="tablist"
+          aria-label="Image carousel"
+        >
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <p class="cta-text">
+          Jei kyla klausimas, ar manualinė terapija gali padėti Jums, klauskite
+          – pakonsultuosime.
+        </p>
+        <button class="cta-button">Kontaktai</button>
+      </section>
+    </div>
+  </main>
+</Base>

@@ -1,6 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import dots from "../../src/assets/dots_background1.svg";
+import liniuote from "../../src/assets/apie1.png";
+import exercise2 from "../../src/assets/exercise2.png";
 ---
 
 <style>
@@ -14,6 +16,7 @@ import dots from "../../src/assets/dots_background1.svg";
     font-size: 2rem;
     font-weight: 600;
     margin-bottom: 0.95rem;
+    line-height: 1.2;
   }
 
   .left-side {
@@ -25,6 +28,19 @@ import dots from "../../src/assets/dots_background1.svg";
     position: absolute;
     z-index: -2;
   }
+
+  .img-container img {
+    border-radius: 10px;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    transition: all 0.3s ease;
+  }
+
+  .img-container img:hover {
+    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
+  }
+
   @media (min-width: 768px) {
     .main-container {
       margin-top: 6.9rem;
@@ -47,8 +63,8 @@ import dots from "../../src/assets/dots_background1.svg";
       flex-direction: row-reverse;
     }
 
-    img {
-      max-width: 19.50888rem;
+    .img-container {
+      max-width: 375px;
     }
   }
   @media (min-width: 1024px) {
@@ -57,8 +73,8 @@ import dots from "../../src/assets/dots_background1.svg";
     }
 
     .dots {
-      bottom: -8%;
-      left: 33%;
+      bottom: -7%;
+      left: 30%;
     }
   }
 </style>
@@ -82,7 +98,9 @@ import dots from "../../src/assets/dots_background1.svg";
         ir sustiprinti jūsų kūną.
       </p>
     </div>
-    <img src="src/assets/rectangle.png" alt="" />
+    <div class="img-container">
+      <Image src={liniuote} alt="kineziterapija" />
+    </div>
   </div>
   <div class="container reverse">
     <div class="left-side">
@@ -97,6 +115,8 @@ import dots from "../../src/assets/dots_background1.svg";
         ✔ Reabilitacija po operacijos
       </p>
     </div>
-    <img src="src/assets/rectangle.png" alt="" />
+    <div class="img-container">
+      <Image src={exercise2} alt="kineziterapija" />
+    </div>
   </div>
 </div>
