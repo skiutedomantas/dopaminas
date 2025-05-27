@@ -1,6 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import hero from "../../src/assets/pagrindine.png";
+import hero_tablet from "../../src/assets/pagrindine_tablet.png";
+import hero_mobile from "../../src/assets/pagrindine_mobile.png";
 ---
 
 <style>
@@ -74,6 +76,18 @@ import hero from "../../src/assets/pagrindine.png";
     max-width: 400px;
   }
 
+  .hero-image-mobile {
+    display: block;
+  }
+
+  .hero-image-tablet {
+    display: none;
+  }
+
+  .hero-image-desktop {
+    display: none;
+  }
+
   @media (min-width: 768px) {
     h1 {
       font-size: 2.625rem;
@@ -103,6 +117,18 @@ import hero from "../../src/assets/pagrindine.png";
     .left-side p {
       max-width: 25rem;
     }
+
+    .hero-image-mobile {
+      display: none;
+    }
+
+    .hero-image-tablet {
+      display: block;
+    }
+
+    .hero-image-desktop {
+      display: none;
+    }
   }
 
   @media (min-width: 1024px) {
@@ -129,6 +155,18 @@ import hero from "../../src/assets/pagrindine.png";
       margin-top: 2.0625rem;
       margin-bottom: 2.875rem;
     }
+
+    .hero-image-mobile {
+      display: none;
+    }
+
+    .hero-image-tablet {
+      display: none;
+    }
+
+    .hero-image-desktop {
+      display: block;
+    }
   }
 </style>
 
@@ -136,7 +174,7 @@ import hero from "../../src/assets/pagrindine.png";
   <div class="left-side">
     <h1>Padedu susigrąžinti judėjimo laisvę</h1>
     <p>
-      Gydymas pritaikytas konkrečiai Jums, Jūsų autentiškam kūnui, Jūsų
+      Gydymas pritaikytas konkrečiai Jums. Jūsų autentiškam kūnui. Jūsų
       sveikatos istorijai
     </p>
     <div class="button-container">
@@ -144,8 +182,23 @@ import hero from "../../src/assets/pagrindine.png";
       <a href="/kontaktai" class="button-link secondary">Susisiek</a>
     </div>
   </div>
+
   <Image
-    class="hero-image"
+    class="hero-image hero-image-mobile"
+    src={hero_mobile}
+    alt="Dominykas Pakarklis"
+    loading="lazy"
+  />
+
+  <Image
+    class="hero-image hero-image-tablet"
+    src={hero_tablet}
+    alt="Dominykas Pakarklis"
+    loading="lazy"
+  />
+
+  <Image
+    class="hero-image hero-image-desktop"
     src={hero}
     alt="Dominykas Pakarklis"
     loading="lazy"

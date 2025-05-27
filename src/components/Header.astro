@@ -129,11 +129,11 @@ import HamburgerWhite from "../../src/assets/hamburger_white.png";
       color: var(--primary-color);
     }
 
-    nav ul li:nth-child(-n + 4) {
+    nav ul li.nav-underline {
       position: relative;
     }
 
-    nav ul li:nth-child(-n + 4)::after {
+    nav ul li.nav-underline::after {
       content: "";
       position: absolute;
       bottom: -0.25rem;
@@ -143,8 +143,7 @@ import HamburgerWhite from "../../src/assets/hamburger_white.png";
       background-color: var(--primary-color);
       transition: width 0.3s ease;
     }
-
-    nav ul li:nth-child(-n + 4):hover::after {
+    nav ul li.nav-underline:hover::after {
       width: 100%;
     }
 
@@ -186,7 +185,6 @@ import HamburgerWhite from "../../src/assets/hamburger_white.png";
       padding: 0.75rem 1rem;
       display: block;
       text-decoration: none;
-      transition: background-color 0.3s ease;
       white-space: nowrap;
     }
 
@@ -237,13 +235,16 @@ import HamburgerWhite from "../../src/assets/hamburger_white.png";
   >
   <nav>
     <ul>
-      <li><a href="/">Pagrindinis</a></li>
+      <li class="nav-underline"><a href="/">Pagrindinis</a></li>
       <li class="dropdown">
         <a href="/paslaugos" class="dropdown-toggle">Paslaugos</a>
         <ul class="dropdown-content">
           <li><a href="/paslaugos/kineziterapija">Kineziterapija</a></li>
           <li>
             <a href="/paslaugos/manualine-terapija">Manualinė terapija</a>
+          </li>
+          <li>
+            <a href="/paslaugos/pirmine-konsultacija">Pirminė konsultacija</a>
           </li>
           <li>
             <a href="/paslaugos/pakartotine-konsultacija"
@@ -253,8 +254,8 @@ import HamburgerWhite from "../../src/assets/hamburger_white.png";
           <li><a href="/paslaugos/menesine-naryste">Mėnesinė narystė</a></li>
         </ul>
       </li>
-      <li><a href="/straipsniai">Straipsniai</a></li>
-      <li><a href="/kontaktai">Kontaktai</a></li>
+      <li class="nav-underline"><a href="/straipsniai">Straipsniai</a></li>
+      <li class="nav-underline"><a href="/kontaktai">Kontaktai</a></li>
       <li>
         <a class="button-registruotis" href="/registracija">Registruotis</a>
       </li>
