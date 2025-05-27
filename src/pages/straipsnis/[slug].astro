@@ -298,7 +298,15 @@ const five = blogs.slice(0, 5);
   }
 </style>
 
-<Base title={blog.title.rendered}>
+<Base
+  tabTitle={blog.title.rendered}
+  title={blog.acf.seo_pavadinimas}
+  description={blog.acf.seo_aprasas}
+  image={blog.acf.pagrindine_nuotrauka}
+  url={`https://www.dopaminas.lt/straipsniai/${blog.slug}`}
+  date={blog.acf.isoDate}
+  type="article"
+>
   <div class="main-container">
     <div class="text-container">
       <div id="progress"></div>
