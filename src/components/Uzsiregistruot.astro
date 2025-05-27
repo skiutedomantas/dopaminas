@@ -17,6 +17,7 @@ import dots_background2 from "../../src/assets/dots_background2.svg";
   }
 
   h2 {
+    text-align: center;
     color: var(--background-color);
     font-size: 2rem;
     font-weight: 600;
@@ -24,6 +25,7 @@ import dots_background2 from "../../src/assets/dots_background2.svg";
   }
 
   .text-container {
+    text-align: center;
     color: var(--background-color);
     padding: 0 0.94rem;
     max-width: 34.375rem;
@@ -58,7 +60,7 @@ import dots_background2 from "../../src/assets/dots_background2.svg";
 
   .dots2 {
     left: 2%;
-    top: -16%;
+    top: -10%;
   }
 
   .crop {
@@ -69,16 +71,23 @@ import dots_background2 from "../../src/assets/dots_background2.svg";
   .dots1 {
     bottom: -0%;
     z-index: 2;
-    right: 30%;
+    right: 18%;
   }
 
   @media (min-width: 768px) {
+    .dots1 {
+      bottom: -0%;
+      z-index: 2;
+      right: 10%;
+    }
+
     .dots2 {
       left: 2%;
       top: -34%;
     }
 
     h2 {
+      text-align: start;
       font-size: 2.25rem;
     }
 
@@ -91,6 +100,7 @@ import dots_background2 from "../../src/assets/dots_background2.svg";
     }
 
     .text-container {
+      text-align: start;
       width: 23.875rem;
       padding: 0;
     }
