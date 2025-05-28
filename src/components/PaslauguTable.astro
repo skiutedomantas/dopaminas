@@ -18,6 +18,7 @@ import crosses_background from "../../src/assets/crosses_background.svg";
   }
 
   .cross {
+    opacity: 0;
     top: 5%;
     left: 18%;
   }
@@ -48,7 +49,7 @@ import crosses_background from "../../src/assets/crosses_background.svg";
   table {
     background-color: var(--background-color);
     border-collapse: separate;
-    border-spacing: 0.5rem;
+    border-spacing: 0.4rem;
     overflow: hidden;
   }
 
@@ -110,10 +111,41 @@ import crosses_background from "../../src/assets/crosses_background.svg";
 
   .link {
     width: 4.7rem;
+    display: none;
   }
 
   .link-cell {
     background-color: var(--primary-color);
+    display: none;
+  }
+
+  .name-link:hover {
+    color: var(--primary-color);
+  }
+
+  @media (min-width: 768px) {
+    .cross {
+      opacity: 1;
+      top: 0%;
+      left: 10%;
+    }
+
+    .link,
+    .link-cell {
+      display: table-cell;
+    }
+
+    table {
+      border-collapse: separate;
+      border-spacing: 0.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .cross {
+      top: 5%;
+      left: 18%;
+    }
   }
 </style>
 <div class="main-container">
@@ -135,7 +167,11 @@ import crosses_background from "../../src/assets/crosses_background.svg";
     </thead>
     <tbody>
       <tr>
-        <td class="paslauga">Pirminė kineziterapeuto <br /> konsultacija</td>
+        <td class="paslauga"
+          ><a class="name-link" href="/paslaugos/pirmine-konsultacija"
+            >Pirminė kineziterapeuto <br /> konsultacija</a
+          ></td
+        >
         <td>Iki 60min.</td>
         <td>60 €</td>
         <td class="link-cell"
@@ -145,7 +181,10 @@ import crosses_background from "../../src/assets/crosses_background.svg";
         >
       </tr>
       <tr>
-        <td class="paslauga">Pakartotinė kineziterapeuto <br /> konsultacija</td
+        <td class="paslauga"
+          ><a class="name-link" href="/paslaugos/pakartotine-konsultacija"
+            >Pakartotinė kineziterapeuto <br /> konsultacija</a
+          ></td
         >
         <td>Iki 45min.</td>
         <td>50 €</td>
@@ -156,7 +195,11 @@ import crosses_background from "../../src/assets/crosses_background.svg";
         >
       </tr>
       <tr>
-        <td class="paslauga">Manualinė terapija</td>
+        <td class="paslauga"
+          ><a class="name-link" href="/paslaugos/manualine-terapija"
+            >Manualinė terapija</a
+          ></td
+        >
         <td>Iki 45min.</td>
         <td>50 €</td>
         <td class="link-cell"
@@ -166,7 +209,11 @@ import crosses_background from "../../src/assets/crosses_background.svg";
         >
       </tr>
       <tr>
-        <td class="paslauga">Kineziterapija</td>
+        <td class="paslauga"
+          ><a class="name-link" href="/paslaugos/kineziterapija"
+            >Kineziterapija</a
+          ></td
+        >
         <td>Iki 45min.</td>
         <td>40 €</td>
         <td class="link-cell"
@@ -176,7 +223,11 @@ import crosses_background from "../../src/assets/crosses_background.svg";
         >
       </tr>
       <tr>
-        <td class="paslauga">Mėnesinė narystė</td>
+        <td class="paslauga"
+          ><a class="name-link" href="/paslaugos/menesine-naryste"
+            >Mėnesinė narystė</a
+          ></td
+        >
         <td>1 mėn.</td>
         <td>50 €</td>
         <td class="link-cell"

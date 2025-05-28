@@ -32,11 +32,16 @@ import pritaikymas from "../../../src/assets/pritaikymas.png";
     opacity: 0;
   }
 
+  .dots3 {
+    left: 32%;
+    bottom: 18%;
+  }
+
   .consultation-container {
     width: 100%;
     padding: 1.5rem 1rem;
     position: relative;
-    overflow-x: hidden;
+    overflow: hidden;
   }
 
   .consultation-header {
@@ -126,13 +131,15 @@ import pritaikymas from "../../../src/assets/pritaikymas.png";
     font-size: 1rem;
     font-weight: 500;
   }
+  .table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+  }
 
   .comparison-table {
     border-collapse: separate;
     border-spacing: 0.5rem;
     width: 100%;
-    margin-bottom: 6.25rem;
-    overflow: hidden;
   }
 
   .comparison-table th {
@@ -173,6 +180,7 @@ import pritaikymas from "../../../src/assets/pritaikymas.png";
   .how-it-works {
     text-align: center;
     margin-bottom: 3rem;
+    margin-top: 6.25rem;
   }
 
   .how-it-works h2 {
@@ -275,6 +283,11 @@ import pritaikymas from "../../../src/assets/pritaikymas.png";
       opacity: 1;
       right: 1%;
       top: 10%;
+    }
+
+    .dots3 {
+      left: 32%;
+      bottom: 22%;
     }
 
     .consultation-container {
@@ -422,125 +435,126 @@ import pritaikymas from "../../../src/assets/pritaikymas.png";
           ✔️ Turintiems motyvacijos dirbti savarankiškai, bet reikalingas vadovavimas
         </p>
       </section>
-
-      <table class="comparison-table">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Paprastas pratimų planas</th>
-            <th>Mėnesinė narystė</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Individualus pratimų planas pagal tikslus</td>
-            <td
-              ><span class="check-icon"
-                ><Image src={checkmark} alt="checkmark" /></span
-              ></td
-            >
-            <td
-              ><span class="check-icon"
-                ><Image src={checkmark} alt="checkmark" /></span
-              ></td
-            >
-          </tr>
-          <tr>
-            <td
-              >Pratimai, skirti skirtingoms treniruočių vietoms (namuose, sporto
-              salėje, su minimaliu inventoriumi)</td
-            >
-            <td
-              ><span class="check-icon"
-                ><Image src={checkmark} alt="checkmark" /></span
-              ></td
-            >
-            <td
-              ><span class="check-icon"
-                ><Image src={checkmark} alt="checkmark" /></span
-              ></td
-            >
-          </tr>
-          <tr>
-            <td>Pratimų atnaujinimas pagal progresą</td>
-            <td
-              ><span class="x-icon"
-                ><Image src={crossmark} alt="crossmark" /></span
-              ></td
-            >
-            <td
-              ><span class="check-icon"
-                ><Image src={checkmark} alt="checkmark" /></span
-              ></td
-            >
-          </tr>
-          <tr>
-            <td>Nuolatinis stebėjimas ir palaikymas</td>
-            <td
-              ><span class="x-icon"
-                ><Image src={crossmark} alt="crossmark" /></span
-              ></td
-            >
-            <td
-              ><span class="check-icon"
-                ><Image src={checkmark} alt="checkmark" /></span
-              ></td
-            >
-          </tr>
-          <tr>
-            <td>Galimybė koreguoti pratimų planą pagal atsiliepimus</td>
-            <td
-              ><span class="x-icon"
-                ><Image src={crossmark} alt="crossmark" /></span
-              ></td
-            >
-            <td
-              ><span class="check-icon"
-                ><Image src={checkmark} alt="checkmark" /></span
-              ></td
-            >
-          </tr>
-          <tr>
-            <td>Asmeninės konsultacijos su kineziterapeutu</td>
-            <td
-              ><span class="x-icon"
-                ><Image src={crossmark} alt="crossmark" /></span
-              ></td
-            >
-            <td
-              ><span class="check-icon"
-                ><Image src={checkmark} alt="checkmark" /></span
-              ></td
-            >
-          </tr>
-          <tr>
-            <td>Motyvacija ir palaikymas per optimalų ryšį</td>
-            <td
-              ><span class="x-icon"
-                ><Image src={crossmark} alt="crossmark" /></span
-              ></td
-            >
-            <td
-              ><span class="check-icon"
-                ><Image src={checkmark} alt="checkmark" /></span
-              ></td
-            >
-          </tr>
-          <tr>
-            <td>Prisitaikymas prie pasikeitusių poreikių</td>
-            <td
-              ><span class="x-icon"
-                ><Image src={crossmark} alt="crossmark" /></span
-              ></td
-            >
-            <td
-              ><span class="check-icon"
-                ><Image src={checkmark} alt="checkmark" /></span
-              ></td
-            >
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-wrapper">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Paprastas pratimų planas</th>
+              <th>Mėnesinė narystė</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Individualus pratimų planas pagal tikslus</td>
+              <td
+                ><span class="check-icon"
+                  ><Image src={checkmark} alt="checkmark" /></span
+                ></td
+              >
+              <td
+                ><span class="check-icon"
+                  ><Image src={checkmark} alt="checkmark" /></span
+                ></td
+              >
+            </tr>
+            <tr>
+              <td
+                >Pratimai, skirti skirtingoms treniruočių vietoms (namuose,
+                sporto salėje, su minimaliu inventoriumi)</td
+              >
+              <td
+                ><span class="check-icon"
+                  ><Image src={checkmark} alt="checkmark" /></span
+                ></td
+              >
+              <td
+                ><span class="check-icon"
+                  ><Image src={checkmark} alt="checkmark" /></span
+                ></td
+              >
+            </tr>
+            <tr>
+              <td>Pratimų atnaujinimas pagal progresą</td>
+              <td
+                ><span class="x-icon"
+                  ><Image src={crossmark} alt="crossmark" /></span
+                ></td
+              >
+              <td
+                ><span class="check-icon"
+                  ><Image src={checkmark} alt="checkmark" /></span
+                ></td
+              >
+            </tr>
+            <tr>
+              <td>Nuolatinis stebėjimas ir palaikymas</td>
+              <td
+                ><span class="x-icon"
+                  ><Image src={crossmark} alt="crossmark" /></span
+                ></td
+              >
+              <td
+                ><span class="check-icon"
+                  ><Image src={checkmark} alt="checkmark" /></span
+                ></td
+              >
+            </tr>
+            <tr>
+              <td>Galimybė koreguoti pratimų planą pagal atsiliepimus</td>
+              <td
+                ><span class="x-icon"
+                  ><Image src={crossmark} alt="crossmark" /></span
+                ></td
+              >
+              <td
+                ><span class="check-icon"
+                  ><Image src={checkmark} alt="checkmark" /></span
+                ></td
+              >
+            </tr>
+            <tr>
+              <td>Asmeninės konsultacijos su kineziterapeutu</td>
+              <td
+                ><span class="x-icon"
+                  ><Image src={crossmark} alt="crossmark" /></span
+                ></td
+              >
+              <td
+                ><span class="check-icon"
+                  ><Image src={checkmark} alt="checkmark" /></span
+                ></td
+              >
+            </tr>
+            <tr>
+              <td>Motyvacija ir palaikymas per optimalų ryšį</td>
+              <td
+                ><span class="x-icon"
+                  ><Image src={crossmark} alt="crossmark" /></span
+                ></td
+              >
+              <td
+                ><span class="check-icon"
+                  ><Image src={checkmark} alt="checkmark" /></span
+                ></td
+              >
+            </tr>
+            <tr>
+              <td>Prisitaikymas prie pasikeitusių poreikių</td>
+              <td
+                ><span class="x-icon"
+                  ><Image src={crossmark} alt="crossmark" /></span
+                ></td
+              >
+              <td
+                ><span class="check-icon"
+                  ><Image src={checkmark} alt="checkmark" /></span
+                ></td
+              >
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <section class="how-it-works">
         <h2>

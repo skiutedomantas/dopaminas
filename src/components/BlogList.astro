@@ -182,6 +182,13 @@ const secondTen = blogs.slice(9, 18);
     margin-bottom: 3rem;
   }
 
+  .stroke {
+    background-image: url("/src/assets/stroke.svg");
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: 80%;
+  }
+
   @media (min-width: 768px) {
     .blog-container {
       flex-direction: row;
@@ -190,7 +197,7 @@ const secondTen = blogs.slice(9, 18);
     .text-container {
       margin-top: 91.2px;
       margin-bottom: 48px;
-      margin-left: 20px;
+      margin-left: 3rem;
       align-items: start;
     }
 
@@ -207,7 +214,7 @@ const secondTen = blogs.slice(9, 18);
 
 <div class="main-container">
   <div class="text-container">
-    <h2>Straipsniai</h2>
+    <h2><span class="stroke">Straipsniai</span></h2>
     <input type="text" id="search" placeholder="Ieškoti..." />
   </div>
   <div class="blog-container">
