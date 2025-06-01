@@ -71,7 +71,9 @@ import ig from "../../src/assets/ig_black.png";
     align-items: center;
     gap: 0.62rem;
   }
-  .info-info a:hover {
+
+  .info-info a:hover,
+  .clickable:hover {
     color: var(--primary-color);
   }
   .info-info img {
@@ -208,10 +210,10 @@ import ig from "../../src/assets/ig_black.png";
     <div class="contact-info">
       <div class="info-container">
         <p class="info-title">Telefono numeris</p>
-        <div class="info-info">
+        <a href="tel:+37063996502" class="info-info">
           <Image src={phoneCall} alt="phone-icon" loading="lazy" />
-          <p>+37063996502</p>
-        </div>
+          <p class="clickable">+37063996502</p>
+        </a>
       </div>
       <div class="info-container">
         <p class="info-title">Adresas</p>

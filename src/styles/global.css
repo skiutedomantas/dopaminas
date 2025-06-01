@@ -14,6 +14,10 @@
   --large-text-color: #14253d;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Inter", "Roboto";
   font-size: 1.065rem;

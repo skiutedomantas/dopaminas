@@ -2,6 +2,8 @@
 import { Image } from "astro:assets";
 import ig from "/src/assets/ig_black.png";
 import fb from "/src/assets/fb_black.png";
+import arrow from "/src/assets/arrow_white.png";
+import arrow_blue from "/src/assets/blue_arrow.png";
 import Autorius from "../../components/Autorius.astro";
 import Base from "../../layouts/Base.astro";
 export async function getStaticPaths() {
@@ -30,7 +32,6 @@ const five = blogs.slice(0, 5);
   }
 
   h1 {
-    margin-bottom: 1.2rem;
     color: var(--large-text-color);
     font-size: 28px;
   }
@@ -222,9 +223,12 @@ const five = blogs.slice(0, 5);
     padding: 2rem;
     border-radius: 8px;
     max-width: 700px;
-    width: 90%;
+    width: 100%;
+    max-height: calc(100vh - 10rem);
+    overflow-y: auto;
     position: relative;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: auto;
   }
 
   .overlay-content ol {
@@ -256,27 +260,54 @@ const five = blogs.slice(0, 5);
     color: var(--primary-color);
   }
 
-  @keyframes grow-progress {
-    from {
-      transform: scaleX(0);
-    }
-    to {
-      transform: scaleX(1);
-    }
-  }
-
   #progress {
     position: fixed;
-    left: 0;
     top: 0;
-    width: 100%;
+    left: 0;
     height: 1em;
+    width: 0%;
     background: var(--primary-color);
     z-index: 99999;
+    transition: width 0.1s linear;
+  }
 
-    transform-origin: 0 50%;
-    animation: grow-progress auto linear;
-    animation-timeline: --page-scroll;
+  .back-to-top {
+    position: fixed;
+    bottom: 3rem;
+    right: 3rem;
+    background-color: var(--primary-color);
+    padding: 0.8rem;
+    border-radius: 20%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+  }
+  .back-to-top img {
+    width: 20px;
+    transform: rotate(-90deg);
+  }
+
+  .heading-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+  }
+  .back-arrow img {
+    margin-top: 0.5rem;
+    width: 24px;
+  }
+  .clickable-title {
+    text-decoration: none;
+    color: inherit;
+  }
+  .clickable-title h1:hover {
+    text-decoration: none;
+    color: var(--primary-color);
   }
 
   @media (min-width: 768px) {
@@ -322,7 +353,14 @@ const five = blogs.slice(0, 5);
   <div class="main-container">
     <div class="text-container">
       <div id="progress"></div>
-      <h1>{blog.title.rendered}</h1>
+      <div class="heading-row">
+        <a href="/straipsniai" class="back-arrow" aria-label="Back to articles">
+          <Image src={arrow_blue} alt="back arrow" loading="lazy" />
+        </a>
+        <a href="/straipsniai" class="clickable-title">
+          <h1>{blog.title.rendered}</h1>
+        </a>
+      </div>
       <Autorius />
       <div class="content-text" set:html={blog.acf.kontentas} />
       <div>
@@ -360,6 +398,12 @@ const five = blogs.slice(0, 5);
       </div>
     </div>
   </div>
+  <button
+    class="back-to-top"
+    onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+  >
+    <img src={arrow.src} alt="Į viršų" />
+  </button>
 </Base>
 
 <script is:inline>
@@ -370,10 +414,12 @@ const five = blogs.slice(0, 5);
 
     trigger.addEventListener("click", () => {
       overlay.style.display = "flex";
+      document.body.style.overflow = "hidden";
     });
 
     closeBtn.addEventListener("click", () => {
       overlay.style.display = "none";
+      document.body.style.overflow = "";
     });
 
     overlay.addEventListener("click", (e) => {
@@ -381,5 +427,15 @@ const five = blogs.slice(0, 5);
         overlay.style.display = "none";
       }
     });
+  });
+
+  const progressBar = document.getElementById("progress");
+
+  window.addEventListener("scroll", () => {
+    const scrollTop = window.scrollY;
+    const docHeight =
+      document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    progressBar.style.width = scrollPercent + "%";
   });
 </script>
