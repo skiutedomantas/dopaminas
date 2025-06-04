@@ -182,13 +182,14 @@ import ig from "../../src/assets/ig_black.png";
     <div class="background-image">
       <Image src={background} alt="background-image" loading="lazy" />
     </div>
-    <div class="contact-form">
+    <form action="contact.php" method="POST" class="contact-form">
       <h2><span class="stroke">Parašykite</span> man</h2>
       <div class="input-group">
         <input
           type="text"
           id="name"
           class="input"
+          name="name"
           placeholder=" "
           autocomplete="off"
           required
@@ -196,16 +197,27 @@ import ig from "../../src/assets/ig_black.png";
         <label class="placeholder" for="name">Vardas</label>
       </div>
       <div class="input-group">
-        <input type="email" id="email" class="input" placeholder=" " required />
+        <input
+          type="email"
+          name="email"
+          id="email"
+          class="input"
+          placeholder=" "
+          required
+        />
         <label class="placeholder" for="email">El. Paštas</label>
       </div>
       <div class="input-group">
-        <textarea id="message" class="input" placeholder=" " required
-        ></textarea>
+        <textarea
+          id="message"
+          name="message"
+          class="input"
+          placeholder=" "
+          required></textarea>
         <label class="placeholder" for="message">Žinutė</label>
       </div>
       <button>Siųsti</button>
-    </div>
+    </form>
 
     <div class="contact-info">
       <div class="info-container">
