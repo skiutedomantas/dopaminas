@@ -29,6 +29,7 @@ import ig from "../../src/assets/ig_black.png";
     height: 2.4375rem;
   }
   textarea {
+    font-family: "Inter", "Roboto";
     resize: none;
     height: 7.875rem;
   }
@@ -182,43 +183,50 @@ import ig from "../../src/assets/ig_black.png";
     <div class="background-image">
       <Image src={background} alt="background-image" loading="lazy" />
     </div>
-    <form action="contact.php" method="POST" class="contact-form">
-      <h2><span class="stroke">Parašykite</span> man</h2>
-      <div class="input-group">
-        <input
-          type="text"
-          id="name"
-          class="input"
-          name="name"
-          placeholder=" "
-          autocomplete="off"
-          required
-        />
-        <label class="placeholder" for="name">Vardas</label>
-      </div>
-      <div class="input-group">
-        <input
-          type="email"
-          name="email"
-          id="email"
-          class="input"
-          placeholder=" "
-          required
-        />
-        <label class="placeholder" for="email">El. Paštas</label>
-      </div>
-      <div class="input-group">
-        <textarea
-          id="message"
-          name="message"
-          class="input"
-          placeholder=" "
-          required></textarea>
-        <label class="placeholder" for="message">Žinutė</label>
-      </div>
-      <button>Siųsti</button>
-    </form>
-    <div id="formResponse" style="margin-top: 1rem;"></div>
+    <div>
+      <form
+        id="contactForm"
+        action="contact.php"
+        method="POST"
+        class="contact-form"
+      >
+        <h2><span class="stroke">Parašykite</span> man</h2>
+        <div class="input-group">
+          <input
+            type="text"
+            id="name"
+            class="input"
+            name="name"
+            placeholder=" "
+            autocomplete="off"
+            required
+          />
+          <label class="placeholder" for="name">Vardas</label>
+        </div>
+        <div class="input-group">
+          <input
+            type="email"
+            name="email"
+            id="email"
+            class="input"
+            placeholder=" "
+            required
+          />
+          <label class="placeholder" for="email">El. Paštas</label>
+        </div>
+        <div class="input-group">
+          <textarea
+            id="message"
+            name="message"
+            class="input"
+            placeholder=" "
+            required></textarea>
+          <label class="placeholder" for="message">Žinutė</label>
+        </div>
+        <button>Siųsti</button>
+      </form>
+      <div id="formResponse" style="margin-top: 1rem;"></div>
+    </div>
     <div class="contact-info">
       <div class="info-container">
         <p class="info-title">Telefono numeris</p>
