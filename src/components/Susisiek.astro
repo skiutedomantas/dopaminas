@@ -218,7 +218,7 @@ import ig from "../../src/assets/ig_black.png";
       </div>
       <button>Siųsti</button>
     </form>
-
+    <div id="formResponse" style="margin-top: 1rem;"></div>
     <div class="contact-info">
       <div class="info-container">
         <p class="info-title">Telefono numeris</p>
@@ -272,3 +272,28 @@ import ig from "../../src/assets/ig_black.png";
     </iframe>
   </div>
 </div>
+
+<script>
+  document
+    .getElementById("contactForm")
+    .addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const forma = e.target;
+      const formData = new FormData(forma);
+      const atsakymas = document.getElementById("formResponse");
+
+      fetch("contact.php", {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => response.text())
+        .then((tekstas) => {
+          atsakymas.innerHTML = `<span style="color: green;">${tekstas}</span>`;
+          forma.reset();
+        })
+        .catch(() => {
+          atsakymas.innerHTML = `<span style="color: red;">Įvyko klaida. Bandykite dar kartą.</span>`;
+        });
+    });
+</script>
