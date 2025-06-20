@@ -1,7 +1,7 @@
 ---
 const getContent = async () => {
   const res = await fetch(
-    "http://localhost/wordpress/wp-json/wp/v2/straipsniai?&acf_format=standard&popular=3"
+    "https://dopaminas.lt/wp-json/wp/v2/straipsniai?&acf_format=standard&popular=3"
   );
   const data = await res.json();
   return data;

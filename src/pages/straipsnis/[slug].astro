@@ -7,7 +7,7 @@ import arrow_blue from "/src/assets/blue_arrow.png";
 import Autorius from "../../components/Autorius.astro";
 import Base from "../../layouts/Base.astro";
 export async function getStaticPaths() {
-  const API_URL = "http://localhost/wordpress/wp-json/wp/v2/straipsniai";
+  const API_URL = "https://dopaminas.lt/wp-json/wp/v2/straipsniai";
   const res = await fetch(`${API_URL}?acf_format=standard&per_page=20`);
   const blogs = await res.json();
 
@@ -16,14 +16,22 @@ export async function getStaticPaths() {
   }));
 }
 
-const API_URL = "http://localhost/wordpress/wp-json/wp/v2/straipsniai";
+const API_URL = "https://dopaminas.lt/wp-json/wp/v2/straipsniai";
 const res = await fetch(`${API_URL}?acf_format=standard&per_page=20`);
 const blogs = await res.json();
+
+const getPopular = async () => {
+  const res = await fetch(
+    "https://dopaminas.lt/wp-json/wp/v2/straipsniai?&acf_format=standard&popular=3"
+  );
+  const popular = await res.json();
+  return popular;
+};
 
 const { slug } = Astro.params;
 
 const blog = blogs.find((b) => b.slug === slug);
-const five = blogs.slice(0, 5);
+const five = await getPopular();
 ---
 
 <style is:global>
@@ -424,11 +432,15 @@ const five = blogs.slice(0, 5);
       <div class="contacts">
         <p class="sekite-mane">Sekite mane:</p>
         <div class="icon-container">
-          <Image class="icon" src={ig} loading="lazy" alt="instagram" />
-          <Image class="icon" src={fb} loading="lazy" alt="facebook" />
+          <a target="_blank" href="https://www.instagram.com/dopaminas.lt/">
+            <Image class="icon" src={ig} alt="instagram" loading="lazy" />
+          </a>
+          <a target="_blank" href="https://www.facebook.com/dopaminas.lt/">
+            <Image class="icon" src={fb} alt="facebook" loading="lazy" />
+          </a>
         </div>
       </div>
-      <p class="sekite-mane">Naujausi straipsniai</p>
+      <p class="sekite-mane">Populiarūs straipsniai</p>
       <div class="popular">
         <ul>
           {
