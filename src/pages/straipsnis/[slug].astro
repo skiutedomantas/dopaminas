@@ -105,7 +105,7 @@ const five = blogs.slice(0, 5);
     padding: 0.5rem;
   }
 
-  figure {
+  .wp-caption {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -113,13 +113,13 @@ const five = blogs.slice(0, 5);
     width: fit-content !important;
   }
 
-  figcaption {
+  .wp-caption-text {
     max-width: fit-content;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     margin-top: -2rem;
-    font-size: 12px;
+    font-size: 12px !important;
   }
 
   blockquote {
@@ -310,6 +310,20 @@ const five = blogs.slice(0, 5);
     color: var(--primary-color);
   }
 
+  .didesnis,
+  .vertical {
+    font-size: 18px;
+  }
+
+  .didesnis div {
+    font-size: 18px;
+  }
+
+  .didesnis div p,
+  .didesnis div ol {
+    font-weight: 400 !important;
+  }
+
   @media (min-width: 768px) {
     .main-container {
       flex-direction: row;
@@ -337,6 +351,36 @@ const five = blogs.slice(0, 5);
     }
     .contact-container {
       padding-left: 5rem;
+    }
+
+    .vertical {
+      display: flex;
+      align-items: center;
+    }
+    .vertical img {
+      max-width: 300px;
+    }
+    .didesnis {
+      flex-direction: column;
+    }
+    .didesnis img {
+      max-width: 440px;
+    }
+  }
+  @media (min-width: 1230px) {
+    .didesnis img {
+      margin-top: 0;
+      max-width: 330px;
+    }
+
+    .didesnis {
+      gap: 1rem;
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
+    .didesnis div {
+      max-width: 440px;
     }
   }
 </style>
