@@ -1,5 +1,4 @@
 ---
-import Logo from '../assets/logo.png';
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
@@ -8,14 +7,21 @@ const {
   tabTitle = 'Pagrindinis',
   title,
   description = "Dopaminas – Kineziterapija, judesio medicina ir sveikas gyvenimo būdas.",
-  image,
+  image = "https://www.dopaminas.lt/_astro/website_cover.png",
   url = "https://www.dopaminas.lt",
   date = null,
   type = "website"
 } = Astro.props;
 
-const finalImage = image ?? Logo;
 const GA_ID = "G-S9GHK1QX5M";
+
+const analyticsScript = `
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '${GA_ID}');
+`;
+
 ---
 
 <html lang="lt">
@@ -31,23 +37,18 @@ const GA_ID = "G-S9GHK1QX5M";
     <link rel="canonical" href={url} />
 
    <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
-    <script>
-      {`window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-S9GHK1QX5M');`}
-    </script>
+    <script set:html={analyticsScript} />
 
     <meta property="og:type" content={type} />
     <meta property="og:title" content={`Dopaminas - ${title}`} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={finalImage} />
+    <meta property="og:image" content={image} />
     <meta property="og:url" content={url} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={`Dopaminas - ${title}`} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={finalImage} />
+    <meta name="twitter:image" content={image} />
 
     {type === "article" && date && (
       <script type="application/ld+json">
@@ -103,5 +104,6 @@ const GA_ID = "G-S9GHK1QX5M";
       <slot />
     </main>
     <Footer />
+      <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   </body>
 </html>

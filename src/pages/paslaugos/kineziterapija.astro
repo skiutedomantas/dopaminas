@@ -177,6 +177,7 @@ import exercise3 from "../../../src/assets/exercise3.png";
   .carousel-indicator {
     width: 0.8rem;
     background-color: #c7d7f0;
+    border: none;
     border-radius: 60%;
     cursor: pointer;
   }
@@ -328,6 +329,38 @@ import exercise3 from "../../../src/assets/exercise3.png";
       font-size: 1.2rem;
       max-width: 60%;
     }
+
+    .carousel-track {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .carousel-slide {
+      flex: 0 0 353px;
+      max-width: 353px;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    .carousel-track {
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      gap: 1rem;
+      transform: none !important;
+    }
+
+    .carousel-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .carousel-slide {
+      flex: 0 0 auto;
+      width: 353px;
+      max-width: 353px;
+    }
   }
 </style>
 
@@ -342,6 +375,7 @@ import exercise3 from "../../../src/assets/exercise3.png";
       let currentIndex = 0;
       const slideCount = slides.length;
       let visibleSlides = 1;
+      let isMobile = window.innerWidth < 1024;
 
       function createIndicators(count) {
         indicatorsContainer.innerHTML = "";
@@ -352,11 +386,10 @@ import exercise3 from "../../../src/assets/exercise3.png";
         }
 
         indicatorsContainer.style.display = "flex";
-
         const totalGroups = Math.ceil(slideCount / count);
 
         for (let i = 0; i < totalGroups; i++) {
-          const indicator = document.createElement("div");
+          const indicator = document.createElement("button");
           indicator.classList.add("carousel-indicator");
           indicator.setAttribute("aria-label", `Slide ${i + 1}`);
 
@@ -366,8 +399,13 @@ import exercise3 from "../../../src/assets/exercise3.png";
           }
 
           indicator.addEventListener("click", () => {
-            currentIndex = i;
-            updateCarousel();
+            if (isMobile) {
+              const slideWidth = 353 + 16;
+              track.scrollLeft = i * slideWidth;
+            } else {
+              currentIndex = i;
+              updateCarousel();
+            }
           });
 
           indicatorsContainer.appendChild(indicator);
@@ -375,43 +413,31 @@ import exercise3 from "../../../src/assets/exercise3.png";
       }
 
       function updateCarouselLayout() {
-        const containerWidth = carouselSection.offsetWidth;
-        const slideWidth = 353;
-        const gap = window.innerWidth >= 1024 ? 24 : 16;
+        isMobile = window.innerWidth < 1024;
 
-        visibleSlides = Math.floor(containerWidth / (slideWidth + gap));
+        if (isMobile) {
+          track.style.transform = "none";
+          createIndicators(1);
+          updateIndicatorsOnScroll();
+        } else {
+          const containerWidth = carouselSection.offsetWidth;
+          const slideWidth = 353;
+          const gap = 24;
 
-        visibleSlides = Math.max(1, Math.min(visibleSlides, slideCount));
+          visibleSlides = Math.floor(containerWidth / (slideWidth + gap));
+          visibleSlides = Math.max(1, Math.min(visibleSlides, slideCount));
 
-        createIndicators(visibleSlides);
-
-        currentIndex = 0;
-        updateCarousel();
+          createIndicators(visibleSlides);
+          currentIndex = 0;
+          updateCarousel();
+        }
       }
 
       function updateCarousel() {
-        let slideWidthPercentage;
-        if (window.innerWidth >= 1024) {
-          slideWidthPercentage = 30;
-        } else if (window.innerWidth >= 900) {
-          slideWidthPercentage = 28;
-        } else if (window.innerWidth >= 768) {
-          slideWidthPercentage = 26;
-        } else if (window.innerWidth >= 650) {
-          slideWidthPercentage = 35;
-        } else if (window.innerWidth >= 550) {
-          slideWidthPercentage = 52;
-        } else if (window.innerWidth >= 450) {
-          slideWidthPercentage = 78;
-        } else if (window.innerWidth >= 425) {
-          slideWidthPercentage = 85;
-        } else if (window.innerWidth >= 375) {
-          slideWidthPercentage = 92;
-        } else {
-          slideWidthPercentage = 100;
-        }
-        const slideWidth = slideWidthPercentage / visibleSlides;
+        if (isMobile) return;
 
+        let slideWidthPercentage = 30;
+        const slideWidth = slideWidthPercentage / visibleSlides;
         const maxIndex = slideCount - visibleSlides;
         const limitedIndex = Math.min(currentIndex, maxIndex);
 
@@ -428,6 +454,27 @@ import exercise3 from "../../../src/assets/exercise3.png";
           }
         });
       }
+
+      function updateIndicatorsOnScroll() {
+        if (!isMobile) return;
+
+        const indicators = document.querySelectorAll(".carousel-indicator");
+        const slideWidth = 353 + 16;
+        const scrollPosition = track.scrollLeft;
+        const activeIndex = Math.round(scrollPosition / slideWidth);
+
+        indicators.forEach((indicator, index) => {
+          if (index === activeIndex) {
+            indicator.classList.add("active");
+            indicator.setAttribute("aria-current", "true");
+          } else {
+            indicator.classList.remove("active");
+            indicator.setAttribute("aria-current", "false");
+          }
+        });
+      }
+
+      track.addEventListener("scroll", updateIndicatorsOnScroll);
 
       updateCarouselLayout();
 

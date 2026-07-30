@@ -1,11 +1,17 @@
 <style>
-  iframe {
+  .main-container {
     width: 100%;
     height: 1200px;
   }
 
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
   @media (min-width: 768px) {
-    iframe {
+    .main-container {
       height: 850px;
     }
   }
@@ -13,7 +19,6 @@
 
 <div class="main-container">
   <iframe
-    title="registracija"
     src="https://app.simplymeet.me/dopaminas?is_widget=1&view=compact"
     frameborder="0"
     scrolling="no"></iframe>
